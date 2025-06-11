@@ -1,0 +1,39 @@
+---
+import Footer from "@components/footer.astro";
+import Header from "@components/header.astro";
+import Layout from "@layouts/base.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+	icon?: string;
+	image?: string;
+	url?: string;
+	disableHeader?: boolean;
+	disableFooter?: boolean;
+}
+
+const {
+	title,
+	description,
+	icon,
+	image,
+	url,
+	disableHeader = false,
+	disableFooter = false,
+} = Astro.props;
+---
+
+<Layout
+  title={title}
+  description={description}
+  icon={icon}
+  image={image}
+  url={url}
+>
+  {!disableHeader && <Header />}
+  <main>
+    <slot />
+  </main>
+  {!disableFooter && <Footer />}
+</Layout>

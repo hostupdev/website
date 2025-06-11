@@ -1,0 +1,17 @@
+{
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	},
+	"files.exclude": {
+		".astro": true,
+		"node_modules": true
+	},
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"cSpell.words": ["hostup"]
+}

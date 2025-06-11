@@ -1,0 +1,87 @@
+---
+import ActionButton from "@components/action_button.astro";
+import { GIT_URLS } from "@constants";
+import MainLayout from "@layouts/main.astro";
+---
+
+<MainLayout title="Hostup - Page Not Found">
+  <section
+    class="flex min-h-dvh flex-col items-center justify-center p-6 pt-24 text-center"
+  >
+    <div class="max-w-2xl">
+      <!-- Terminal-style error box -->
+      <div class="bg-surface border border-primary/20 rounded-lg p-8 mb-8 shadow-outer-lg backdrop-blur-sm">
+        <div class="flex items-center justify-between mb-6">
+          <span class="text-on-surface/60 text-sm font-mono">Error Log</span>
+          <div class="flex space-x-1">
+            <div class="w-3 h-3 rounded-full bg-accent-variant/60"></div>
+            <div class="w-3 h-3 rounded-full bg-secondary/60"></div>
+            <div class="w-3 h-3 rounded-full bg-primary/60"></div>
+          </div>
+        </div>
+        
+        <div class="bg-background/50 rounded-md p-6 border border-surface-variant/30 mb-6">
+          <div class="font-mono text-left space-y-2">
+            <div class="text-accent text-sm">$ hostup navigate /page-not-found</div>
+            <div class="text-on-surface/60 text-sm">→ Scanning routes...</div>
+            <div class="text-on-surface/60 text-sm">→ Route not found in registry</div>
+            <div class="text-primary text-sm flex items-center space-x-2">
+              <span>✗ Error:</span>
+              <span class="text-on-surface">404 - Page not found</span>
+            </div>
+          </div>
+        </div>
+        
+        <h1 class="text-8xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
+          404
+        </h1>
+        <h2 class="text-3xl font-semibold text-on-surface mb-4">
+          Route Not Found
+        </h2>
+        <p class="text-on-surface/70 mb-6 text-lg leading-relaxed">
+          Looks like this page went off the grid. The route you're looking for 
+          might have been moved, removed, or never existed in our service registry.
+        </p>
+        
+        <!-- Error icon with animation -->
+        <div class="flex justify-center mb-8">
+          <div class="relative">
+            <div class="w-16 h-16 bg-gradient-to-br from-surface-variant/30 via-accent-variant/35 to-secondary/25 dark:from-surface-variant/15 dark:via-accent-variant/20 dark:to-secondary/15 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-accent animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.664-.833-2.464 0L4.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+              </svg>
+            </div>
+            <div class="absolute -top-2 -right-2 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
+              <span class="text-on-primary text-xs font-bold">!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Action buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <ActionButton href="/" variant="primary" enableScale size="lg">
+          Return Home
+        </ActionButton>
+      </div>
+      
+      <!-- Helpful links -->
+      <div class="mt-8 pt-6 border-t border-surface-variant/30">
+        <p class="text-on-surface/60 text-sm mb-4">
+          Quick links to get you back on track:
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm">
+          <a href="/services" class="text-primary hover:text-accent transition-colors">
+            Services
+          </a>
+          <a href="/guides" class="text-primary hover:text-accent transition-colors">
+            Guides
+          </a>
+          <a href={GIT_URLS.ROOT} class="text-primary hover:text-accent transition-colors">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

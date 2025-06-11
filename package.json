@@ -1,0 +1,29 @@
+{
+	"name": "website",
+	"type": "module",
+	"version": "1.0.0",
+	"scripts": {
+		"astro": "astro",
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"compose": "docker compose --env-file .env.dev -f docker-compose.dev.yaml up --build",
+		"recompose": "docker compose --env-file .env.dev -f docker-compose.dev.yaml up --build --force-recreate",
+		"format": "biome format --write .",
+		"lint": "biome lint --fix .",
+		"check": "biome check --write ."
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.9.4",
+		"@astrojs/node": "^9.2.2",
+		"@tailwindcss/vite": "4.1.8",
+		"astro": "^5.9.2",
+		"tailwindcss": "^4.1.8",
+		"typescript": "^5.7.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"astro-meta-tags": "^0.3.1"
+	}
+}

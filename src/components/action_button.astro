@@ -1,0 +1,103 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+	variant?: "primary" | "secondary" | "outline" | "ghost" | "gradient";
+	enableScale?: boolean;
+	size?: "sm" | "md" | "lg" | "xl";
+	disabled?: boolean;
+	fullWidth?: boolean;
+}
+
+const {
+	id,
+	href,
+	onclick,
+	variant = "outline",
+	enableScale = false,
+	size = "md",
+	disabled = false,
+	fullWidth = false,
+	class: additionalClasses,
+	...rest
+} = Astro.props;
+
+// Base classes
+const baseClasses = [
+	"inline-flex items-center justify-center text-center font-semibold",
+	"rounded-lg border transition-all duration-200 ease-in-out",
+	"overflow-hidden",
+	"focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2",
+	"disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none",
+	fullWidth ? "w-full" : "w-auto",
+];
+
+// Size variants
+const sizeClasses = {
+	sm: "px-3 py-1.5 text-sm",
+	md: "px-5 py-2.5 text-base",
+	lg: "px-6 py-3 text-lg",
+	xl: "px-8 py-4 text-xl",
+};
+
+// Style variants
+const variantClasses = {
+	primary: [
+		"bg-primary text-on-primary border-primary",
+		"hover:bg-primary/90 hover:shadow-outer-md",
+		"active:bg-primary/80",
+	],
+	secondary: [
+		"bg-secondary text-on-secondary border-secondary",
+		"hover:bg-secondary/90 hover:shadow-outer-md",
+		"active:bg-secondary/80",
+	],
+	outline: [
+		"bg-transparent text-on-background border-surface-variant",
+		"hover:border-primary hover:text-primary hover:bg-primary/5",
+		"active:bg-primary/10",
+	],
+	ghost: [
+		"bg-transparent text-on-background border-transparent",
+		"hover:bg-surface-variant/50 hover:text-primary",
+		"active:bg-surface-variant/70",
+	],
+	gradient: [
+		"bg-gradient-to-r from-primary to-accent text-on-primary border-transparent",
+		"bg-clip-padding",
+		"hover:shadow-outer-lg hover:from-primary/90 hover:to-accent/90",
+		"active:from-primary/80 active:to-accent/80",
+	],
+};
+
+// Scale animation classes
+const scaleClasses = enableScale
+	? [
+			"transform hover:scale-105 active:scale-95",
+			"hover:shadow-outer-md active:shadow-sm",
+		]
+	: [];
+
+// Combine all classes
+const allClasses = [
+	...baseClasses,
+	sizeClasses[size],
+	...variantClasses[variant],
+	...scaleClasses,
+	additionalClasses,
+]
+	.filter(Boolean)
+	.join(" ");
+---
+
+<a
+  id={id}
+  onclick={onclick}
+  href={disabled ? undefined : href}
+  class={allClasses}
+  aria-disabled={disabled}
+  tabindex={disabled ? -1 : undefined}
+  {...rest}
+>
+  <slot />
+</a>

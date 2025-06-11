@@ -1,0 +1,74 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { CONTACT, META, SITE } from "@constants";
+import "@styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	icon?: string;
+	image?: string;
+	url?: string;
+}
+
+const {
+	title = SITE.TITLE,
+	description = SITE.DESCRIPTION,
+	icon = SITE.ICON,
+	image = SITE.DEFAULT_OG_IMAGE,
+	url = SITE.URL,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+
+    <!-- Search Engine and Browser Meta Tags -->
+    <meta name="description" content={description} />
+    <meta name="abstract" content={SITE.ABSTRACT} />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={description} />
+    <meta property="og:site_name" content={SITE.TITLE} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:locale" content={SITE.LOCALE} />
+    <!-- <meta property="og:email" content={CONTACT.EMAIL} /> -->
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:url" content={url} />
+    <!-- <meta name="twitter:site" content={SOCIAL.TWITTER} /> -->
+
+    <!-- Additional Meta Tags -->
+    <meta name="generator" content={Astro.generator || "Astro"} />
+    <meta name="author" content={META.AUTHOR} />
+    <meta name="theme-color" content={META.DARK_THEME_COLOR} />
+    <link rel="icon" type="image/svg+xml" href={icon} />
+    <link rel="canonical" href={url} />
+
+    <!-- Title -->
+    <title>{title}</title>
+
+    <ClientRouter />
+  </head>
+
+  <body
+    class="bg-background text-on-background selection:bg-secondary/30 overscroll-none"
+  >
+    <slot />
+  </body>
+</html>
