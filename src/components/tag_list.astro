@@ -1,0 +1,32 @@
+---
+export interface Props {
+	tags: string[];
+	maxVisible?: number;
+	size?: "sm" | "md";
+}
+
+const { tags, maxVisible = 2, size = "sm" } = Astro.props;
+
+const sizeClasses = {
+	sm: "px-2 py-1 text-xs",
+	md: "px-3 py-1.5 text-sm",
+};
+
+const visibleTags = tags.slice(0, maxVisible);
+const hiddenCount = tags.length - maxVisible;
+---
+
+{tags && tags.length > 0 && (
+	<div class="flex flex-wrap gap-1 mt-3">
+		{visibleTags.map((tag: string) => (
+			<span class={`inline-flex items-center rounded font-medium bg-surface-variant/30 text-on-background/60 ${sizeClasses[size]}`}>
+				#{tag}
+			</span>
+		))}
+		{hiddenCount > 0 && (
+			<span class={`inline-flex items-center text-on-background/50 ${size === 'sm' ? 'text-xs' : 'text-sm'}`}>
+				+{hiddenCount} more
+			</span>
+		)}
+	</div>
+)} 

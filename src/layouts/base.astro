@@ -21,7 +21,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -29,6 +29,31 @@ const {
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
     />
+
+    <!-- Immediate theme application -->
+    <script is:inline>
+      (function() {
+        function getStoredTheme() {
+          try {
+            return localStorage.getItem("theme") || "system";
+          } catch (e) {
+            return "system";
+          }
+        }
+        
+        function applyTheme(mode) {
+          if (mode === "system") {
+            const darkModeOn = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.documentElement.setAttribute("data-theme", darkModeOn ? "dark" : "light");
+          } else {
+            document.documentElement.setAttribute("data-theme", mode);
+          }
+        }
+        
+        // Apply theme immediately
+        applyTheme(getStoredTheme());
+      })();
+    </script>
 
     <!-- Search Engine and Browser Meta Tags -->
     <meta name="description" content={description} />

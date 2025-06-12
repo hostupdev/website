@@ -65,16 +65,27 @@ const buttonClasses = [
   </svg>
 </button>
 
-<script is:inline>
+<script>
+import { getTheme, setTheme, initTheme } from "@utilities/theme";
+
+// Extend Window interface for our custom property
+declare global {
+  interface Window {
+    hostupThemeSwitcherInitialized?: boolean;
+  }
+}
+
+type ThemeMode = "light" | "dark" | "system";
+
 (function() {
   // Prevent multiple initialization
   if (window.hostupThemeSwitcherInitialized) return;
   window.hostupThemeSwitcherInitialized = true;
   
   let currentThemeIndex = 0;
-  const themes = ["system", "light", "dark"];
+  const themes: ThemeMode[] = ["system", "light", "dark"];
   
-  function updateDisplay() {
+  function updateIconDisplay() {
     const theme = themes[currentThemeIndex];
     
     // Update all theme switcher instances on the page
@@ -102,26 +113,18 @@ const buttonClasses = [
           break;
       }
     });
-    
-    // Apply theme to document
-    if (theme === "system") {
-      const darkModeOn = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      document.documentElement.setAttribute("data-theme", darkModeOn ? "dark" : "light");
-    } else {
-      document.documentElement.setAttribute("data-theme", theme);
-    }
-    
-    // Save to localStorage
-    localStorage.setItem("theme", theme);
   }
   
-  function initTheme() {
-    // Get saved theme or default to system
-    const savedTheme = localStorage.getItem("theme") || "system";
-    currentThemeIndex = themes.indexOf(savedTheme);
+  function initThemeSwitcher() {
+    // Initialize the theme system (this handles system preference listeners)
+    initTheme();
+    
+    // Get current theme and update UI
+    const currentTheme = getTheme();
+    currentThemeIndex = themes.indexOf(currentTheme);
     if (currentThemeIndex === -1) currentThemeIndex = 0;
     
-    updateDisplay();
+    updateIconDisplay();
     
     // Add click handlers to all theme switcher buttons
     const allSwitchers = document.querySelectorAll('[id="themeSwitcher"]');
@@ -129,9 +132,13 @@ const buttonClasses = [
       if (!switcher.hasAttribute("data-theme-handler")) {
         switcher.setAttribute("data-theme-handler", "true");
         
-        switcher.addEventListener("click", function() {
+        switcher.addEventListener("click", function(this: HTMLElement) {
           currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-          updateDisplay();
+          const newTheme = themes[currentThemeIndex];
+          
+          // Use the theme utility to set the theme
+          setTheme(newTheme);
+          updateIconDisplay();
           
           // Animation feedback
           this.style.transform = "scale(0.9)";
@@ -142,15 +149,8 @@ const buttonClasses = [
       }
     });
   }
-  
-  // Initialize when ready
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initTheme);
-  } else {
-    initTheme();
-  }
-  
+
   // Handle Astro page loads
-  document.addEventListener("astro:page-load", initTheme);
+  document.addEventListener("astro:page-load", initThemeSwitcher);
 })();
 </script> 

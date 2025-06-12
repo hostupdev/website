@@ -21,11 +21,19 @@ function applyTheme(mode: ThemeMode) {
 }
 
 function getStoredTheme(): ThemeMode {
-	return (localStorage.getItem("theme") as ThemeMode) || "system";
+	try {
+		return (localStorage.getItem("theme") as ThemeMode) || "system";
+	} catch (e) {
+		return "system";
+	}
 }
 
 function setStoredTheme(mode: ThemeMode) {
-	localStorage.setItem("theme", mode);
+	try {
+		localStorage.setItem("theme", mode);
+	} catch (e) {
+		// Silently fail if localStorage is not available
+	}
 }
 
 /**
@@ -46,12 +54,18 @@ export function setTheme(mode: ThemeMode) {
 /**
  * Initializes the theme by reading the stored preference or defaulting to 'system'.
  * Also attaches a listener to update the theme if the system preference changes.
+ * Note: The initial theme application is now handled by a blocking script in the HTML head.
  */
 export function initTheme() {
 	const mode = getStoredTheme();
-	applyTheme(mode);
 
-	// When 'system' is chosen, automatically update if the user’s system theme changes.
+	// Only apply theme if it hasn't been set yet (fallback for edge cases)
+	const currentTheme = document.documentElement.getAttribute("data-theme");
+	if (!currentTheme) {
+		applyTheme(mode);
+	}
+
+	// When 'system' is chosen, automatically update if the user's system theme changes.
 	window
 		.matchMedia("(prefers-color-scheme: dark)")
 		.addEventListener("change", () => {

@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+	category: CollectionEntry<"docCategories">;
+	size?: "sm" | "md" | "lg";
+	showIcon?: boolean;
+}
+
+const { category, size = "md", showIcon = true } = Astro.props;
+
+const sizeClasses = {
+	sm: "px-2 py-1 text-xs",
+	md: "px-3 py-1.5 text-xs",
+	lg: "px-4 py-2 text-sm",
+};
+
+const iconSizeClasses = {
+	sm: "text-xs",
+	md: "text-sm",
+	lg: "text-base",
+};
+---
+
+<span class={`inline-flex items-center rounded-full font-medium border ${category.data.bgColor} ${category.data.textColor} ${sizeClasses[size]}`}>
+	{showIcon && (
+		<span class={`mr-2 ${iconSizeClasses[size]}`}>
+			{category.data.icon}
+		</span>
+	)}
+	{category.data.title}
+</span> 

@@ -1,0 +1,23 @@
+---
+export interface Props {
+	title: string;
+	slug: string;
+	currentPath: string;
+}
+
+const { title, slug, currentPath } = Astro.props;
+const isActive = currentPath === slug;
+---
+
+<li>
+  <a 
+    href={slug} 
+    class={`block py-2 px-3 text-sm text-on-background/70 hover:text-primary hover:bg-primary/10 rounded-lg transition-all duration-200 group ${
+      isActive ? 'bg-gradient-to-r from-primary/20 to-accent/10 text-primary border border-primary/30' : ''
+    }`}
+  >
+    <span class="group-hover:translate-x-1 transition-transform duration-200 inline-block">
+      {title}
+    </span>
+  </a>
+</li> 

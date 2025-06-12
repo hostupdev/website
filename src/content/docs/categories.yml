@@ -1,0 +1,23 @@
+getting-started:
+  title: "Getting Started"
+  description: "Begin your journey with our comprehensive getting started guides"
+  icon: "🚀"
+  textColor: "text-primary"
+  bgColor: "bg-primary/10 border-primary/20"
+  order: 1
+
+tui:
+  title: "TUI"
+  description: "Complete TUI documentation and reference materials"
+  icon: "🖥️"
+  textColor: "text-accent"
+  bgColor: "bg-accent/10 border-accent/20"
+  order: 2
+
+cli:
+  title: "CLI"
+  description: "Complete CLI documentation and reference materials"
+  icon: "⌨️"
+  textColor: "text-secondary"
+  bgColor: "bg-secondary/10 border-secondary/20"
+  order: 3

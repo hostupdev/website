@@ -1,0 +1,37 @@
+---
+import SidebarEntry from "@components/sidebar_entry.astro";
+
+export interface Props {
+	category: string;
+	title: string;
+	icon: string;
+	color: string;
+	items: { title: string; slug: string; order: number }[];
+	currentPath: string;
+}
+
+const { category, title, icon, color, items, currentPath } = Astro.props;
+---
+
+<div class="space-y-3 nav-category" data-category={category}>
+  <button class="flex items-center justify-between w-full text-left category-toggle hover:bg-surface-variant/40 hover:cursor-pointer hover:text-primary transition-colors duration-200 rounded-lg p-2">
+    <div class="flex items-center space-x-1">
+      <span class="text-lg transition-transform duration-200 hover:scale-110">{icon}</span>
+      <h3 class={`text-sm font-semibold tracking-wide ${color} transition-colors duration-200`}>
+        {title}
+      </h3>
+    </div>
+    <svg class="w-4 h-4 text-on-background/50 transition-all duration-200 category-arrow hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <ul class="space-y-1 pl-3 border-l border-surface-variant/30 category-content hidden">
+    {items.map((item) => (
+      <SidebarEntry 
+        title={item.title} 
+        slug={item.slug} 
+        currentPath={currentPath} 
+      />
+    ))}
+  </ul>
+</div> 

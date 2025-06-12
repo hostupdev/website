@@ -1,0 +1,107 @@
+---
+export interface Props {
+	containerId: string;
+	class?: string;
+	showScrollbar?: boolean;
+}
+
+const {
+	containerId,
+	class: className = "",
+	showScrollbar = true,
+} = Astro.props;
+---
+
+<div class={`relative flex-1 min-h-0 ${className}`}>
+  <!-- Top gradient overlay -->
+  <div 
+    id={`${containerId}-top-gradient`}
+    class="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-surface/80 to-transparent pointer-events-none z-10 opacity-0 transition-opacity duration-200"
+  ></div>
+  
+  <!-- Scrollable content -->
+  <div 
+    id={`${containerId}-scroll-container`}
+    class="h-full overflow-y-auto"
+    style={showScrollbar ? 'scrollbar-width: thin; scrollbar-color: rgb(var(--color-surface-variant) / 0.5) transparent;' : 'scrollbar-width: none; -ms-overflow-style: none;'}
+  >
+    <slot />
+  </div>
+  
+  <!-- Bottom gradient overlay -->
+  <div 
+    id={`${containerId}-bottom-gradient`}
+    class="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-surface/80 to-transparent pointer-events-none z-10 transition-opacity duration-200"
+  ></div>
+</div>
+
+
+
+<script define:vars={{ containerId, showScrollbar }}>
+  function initScrollingContainer(id, showScrollbar) {
+    const scrollContainer = document.getElementById(`${id}-scroll-container`);
+    const topGradient = document.getElementById(`${id}-top-gradient`);
+    const bottomGradient = document.getElementById(`${id}-bottom-gradient`);
+    
+    if (!scrollContainer || !topGradient || !bottomGradient) return;
+    
+    // Apply webkit scrollbar styles via JavaScript
+    if (showScrollbar) {
+      // Create and inject webkit scrollbar styles
+      const style = document.createElement('style');
+      style.textContent = `
+        #${id}-scroll-container::-webkit-scrollbar {
+          width: 6px;
+        }
+        #${id}-scroll-container::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        #${id}-scroll-container::-webkit-scrollbar-thumb {
+          background: rgb(var(--color-surface-variant) / 0.5);
+          border-radius: 3px;
+        }
+        #${id}-scroll-container::-webkit-scrollbar-thumb:hover {
+          background: rgb(var(--color-surface-variant) / 0.7);
+        }
+      `;
+      document.head.appendChild(style);
+    } else {
+      // Hide webkit scrollbar
+      const style = document.createElement('style');
+      style.textContent = `
+        #${id}-scroll-container::-webkit-scrollbar {
+          display: none;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    function updateScrollIndicators() {
+      if (!scrollContainer || !topGradient || !bottomGradient) return;
+      
+      const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+      const isScrolledFromTop = scrollTop > 0;
+      const isScrolledToBottom = scrollTop + clientHeight >= scrollHeight - 1;
+      
+      // Show top gradient if scrolled from top
+      topGradient.style.opacity = isScrolledFromTop ? '1' : '0';
+      
+      // Show bottom gradient if not scrolled to bottom
+      bottomGradient.style.opacity = isScrolledToBottom ? '0' : '1';
+    }
+    
+    // Initial check
+    updateScrollIndicators();
+    
+    // Update on scroll
+    scrollContainer.addEventListener('scroll', updateScrollIndicators);
+    
+    // Update on resize (in case content changes)
+    window.addEventListener('resize', updateScrollIndicators);
+  }
+  
+  // Initialize when DOM is loaded
+  document.addEventListener('astro:page-load', () => {
+    initScrollingContainer(containerId, showScrollbar);
+  });
+</script> 

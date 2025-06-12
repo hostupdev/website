@@ -1,0 +1,59 @@
+---
+import type { CollectionEntry } from "astro:content";
+import CategoryBadge from "./category_badge.astro";
+import TagList from "./tag_list.astro";
+
+export interface Props {
+	doc: CollectionEntry<"docs">;
+	category: CollectionEntry<"docCategories">;
+	variant?: "recent" | "compact";
+	showLastUpdated?: boolean;
+}
+
+const {
+	doc,
+	category,
+	variant = "compact",
+	showLastUpdated = false,
+} = Astro.props;
+
+const cardClasses =
+	variant === "recent"
+		? "group block bg-surface/70 backdrop-blur-sm rounded-xl border border-surface-variant/40 shadow-outer-md hover:shadow-outer-lg transition-all duration-300 p-6 hover:scale-[1.02]"
+		: "group block bg-surface/50 backdrop-blur-sm rounded-lg border border-surface-variant/40 hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-200 p-4 hover:scale-[1.01]";
+
+const titleClasses =
+	variant === "recent"
+		? "text-lg font-semibold text-on-surface mb-3 group-hover:text-primary transition-colors"
+		: "text-base font-medium text-on-surface mb-2 group-hover:text-primary transition-colors";
+
+const descriptionClasses =
+	variant === "recent"
+		? "text-on-surface/60 text-sm leading-relaxed"
+		: "text-sm text-on-surface/60 leading-relaxed line-clamp-2";
+---
+
+<a href={`/docs/${doc.id}`} class={cardClasses}>
+	{variant === "recent" && (
+		<div class="flex items-center justify-between mb-4">
+			<CategoryBadge category={category} size="sm" />
+			{showLastUpdated && doc.data.lastUpdated && (
+				<span class="text-xs text-on-surface/50 bg-surface-variant/30 px-2 py-1 rounded-full">
+					{new Date(doc.data.lastUpdated).toLocaleDateString()}
+				</span>
+			)}
+		</div>
+	)}
+	
+	<h4 class={titleClasses}>
+		{doc.data.title}
+	</h4>
+	
+	<p class={descriptionClasses}>
+		{doc.data.description}
+	</p>
+	
+	{variant === "compact" && (
+		<TagList tags={doc.data.tags || []} maxVisible={2} />
+	)}
+</a> 

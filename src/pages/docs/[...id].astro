@@ -1,0 +1,27 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Prose from "@components/prose.astro";
+import DocsLayout from "@layouts/doc.astro";
+
+export async function getStaticPaths() {
+	const docs = await getCollection("docs", ({ data }) => !data.draft);
+
+	return docs.map((doc) => ({
+		params: { id: doc.id },
+		props: { doc },
+	}));
+}
+
+interface Props {
+	doc: CollectionEntry<"docs">;
+}
+
+const { doc } = Astro.props;
+const { Content, headings } = await render(doc);
+---
+
+<DocsLayout document={doc.data} headings={headings}>
+  <Prose>
+    <Content />
+  </Prose>
+</DocsLayout> 

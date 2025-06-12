@@ -1,0 +1,243 @@
+---
+import ScrollingContainer from "@components/scrolling_container.astro";
+import type { MarkdownHeading } from "astro";
+
+export interface Props {
+	headings: MarkdownHeading[];
+	context?: string;
+}
+
+const { headings, context = "default" } = Astro.props;
+---
+
+{headings.length > 0 && (
+  <div class="w-full h-full">
+    <div class="bg-surface/60 backdrop-blur-sm rounded-2xl border border-surface-variant/30 shadow-outer-md h-full flex flex-col">
+      <h3 class="text-sm font-semibold text-on-background mb-4 flex items-center space-x-2 px-4 pt-4 flex-shrink-0">
+        <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+        </svg>
+        <span>On this page</span>
+      </h3>
+      
+      <div class="flex flex-1 overflow-hidden">
+        <!-- Table of Contents -->
+        <ScrollingContainer containerId={`toc-${context}`}>
+          <nav class="px-4 pb-4 pr-2">
+            <ul class="space-y-1 text-sm">
+              {headings.map((heading) => (
+                <li>
+                  <a
+                    href={`#${heading.slug}`}
+                    data-heading={heading.slug}
+                    data-context={context}
+                    class={`block py-2 px-3 text-on-background/70 hover:text-primary hover:bg-primary/10 rounded-lg transition-all duration-200 ${
+                      heading.depth === 2 ? 'font-medium' : 
+                      heading.depth === 3 ? 'pl-6 text-sm' : 'pl-9 text-xs'
+                    }`}
+                  >
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </ScrollingContainer>
+        
+        <!-- Progress Bar -->
+        <div class="w-6 flex flex-col items-center py-4">
+          <div class="relative flex-1 w-0.5 bg-surface-variant/30 rounded-full">
+            <!-- Progress line -->
+            <div id={`progress-line-${context}`} class="absolute top-0 left-0 w-full bg-gradient-to-b from-primary to-accent rounded-full transition-all duration-300" style="height: 0%"></div>
+            
+            <!-- Progress dots -->
+            <div class="absolute inset-0" id={`progress-dots-container-${context}`}>
+              {headings.map((heading, index) => (
+                <div 
+                  class="absolute w-3 h-3 -ml-1.25 rounded-full border-2 border-surface-variant/50 bg-surface transition-all duration-300 progress-dot cursor-pointer hover:scale-110"
+                  data-heading={heading.slug}
+                  data-index={index}
+                  data-context={context}
+                  id={`progress-dot-${context}-${heading.slug}`}
+                ></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  function initProgressBar(context = 'default') {
+    const headings = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6')).filter(h => h.id);
+    const progressDots = document.querySelectorAll(`.progress-dot[data-context="${context}"]`);
+    const progressLine = document.getElementById(`progress-line-${context}`);
+    const tocLinks = document.querySelectorAll(`[data-heading][data-context="${context}"]`);
+    const dotsContainer = document.getElementById(`progress-dots-container-${context}`);
+    
+    if (!headings.length || !progressLine || !dotsContainer) return;
+
+    let currentActive = -1;
+
+    // Position dots evenly along the progress bar
+    function positionDots() {
+      const containerRect = dotsContainer!.getBoundingClientRect();
+      const containerHeight = containerRect.height;
+      const dotSize = 12;
+      const availableHeight = containerHeight - dotSize;
+      
+      headings.forEach((heading, index) => {
+        const dot = document.getElementById(`progress-dot-${context}-${heading.id}`);
+        if (dot) {
+          let position;
+          
+          if (headings.length === 1) {
+            position = containerHeight / 2 - dotSize / 2;
+          } else {
+            position = (index / (headings.length - 1)) * availableHeight;
+          }
+          
+          position = Math.max(0, Math.min(availableHeight, position));
+          dot.style.top = `${position}px`;
+        }
+      });
+    }
+
+    function updateProgress() {
+      if (headings.length === 0) return;
+      
+      const headerOffset = 120;
+      let activeIndex = 0;
+      
+      // Find the heading that's currently in view
+      for (let i = headings.length - 1; i >= 0; i--) {
+        const heading = headings[i];
+        const rect = heading.getBoundingClientRect();
+        
+        if (rect.top <= headerOffset) {
+          activeIndex = i;
+          break;
+        }
+      }
+
+      // Update progress line based on active heading
+      if (progressLine) {
+        const progressPercent = headings.length === 1 ? 100 : (activeIndex / (headings.length - 1)) * 100;
+        progressLine.style.height = `${progressPercent}%`;
+      }
+
+      // Update dots and links if active heading changed
+      if (activeIndex !== currentActive) {
+        currentActive = activeIndex;
+        
+        progressDots.forEach((dot) => {
+          const dotElement = dot as HTMLElement;
+          const headingId = dotElement.dataset.heading;
+          const headingIndex = headings.findIndex(h => h.id === headingId);
+          
+          if (headingIndex === activeIndex) {
+            dotElement.classList.add('border-primary', 'bg-primary', 'scale-125');
+            dotElement.classList.remove('border-surface-variant/50', 'bg-surface', 'border-accent', 'bg-accent');
+          } else if (headingIndex < activeIndex) {
+            dotElement.classList.add('border-accent', 'bg-accent');
+            dotElement.classList.remove('border-surface-variant/50', 'bg-surface', 'border-primary', 'bg-primary', 'scale-125');
+          } else {
+            dotElement.classList.add('border-surface-variant/50', 'bg-surface');
+            dotElement.classList.remove('border-primary', 'bg-primary', 'border-accent', 'bg-accent', 'scale-125');
+          }
+        });
+
+        tocLinks.forEach((link) => {
+          const linkElement = link as HTMLElement;
+          const headingId = linkElement.dataset.heading;
+          const headingIndex = headings.findIndex(h => h.id === headingId);
+          
+          if (headingIndex === activeIndex) {
+            linkElement.classList.add('text-primary', 'bg-primary/10');
+            linkElement.classList.remove('text-on-background/70');
+          } else {
+            linkElement.classList.remove('text-primary', 'bg-primary/10');
+            linkElement.classList.add('text-on-background/70');
+          }
+        });
+      }
+    }
+
+    // Handle dot clicks
+    progressDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const headingId = (dot as HTMLElement).dataset.heading;
+        const heading = headings.find(h => h.id === headingId);
+        if (heading) {
+          const headerOffset = 120;
+          const elementPosition = (heading as HTMLElement).offsetTop - headerOffset;
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Handle TOC link clicks
+    tocLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const headingId = (link as HTMLElement).dataset.heading;
+        const heading = headings.find(h => h.id === headingId);
+        if (heading) {
+          const headerOffset = 120;
+          const elementPosition = (heading as HTMLElement).offsetTop - headerOffset;
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Throttled scroll handler
+    let ticking = false;
+    function handleScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateProgress();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    // Initial setup
+    positionDots();
+    updateProgress();
+    
+    // Event listeners
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', () => {
+      setTimeout(() => {
+        positionDots();
+        updateProgress();
+      }, 100);
+    });
+  }
+
+  // Initialize progress bars for all contexts
+  function initAllProgressBars() {
+    // Find all unique contexts
+    const contexts = new Set();
+    document.querySelectorAll('[data-context]').forEach(el => {
+      const context = el.getAttribute('data-context');
+      if (context) contexts.add(context);
+    });
+    
+    // Initialize each context
+    contexts.forEach(context => {
+      initProgressBar(context as string);
+    });
+  }
+
+  document.addEventListener('astro:page-load', initAllProgressBars);
+</script>

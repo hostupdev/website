@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+	category: CollectionEntry<"docCategories">;
+	docs: CollectionEntry<"docs">[];
+	categoryKey: string;
+	maxDocsShown?: number;
+}
+
+const { category, docs, categoryKey, maxDocsShown = 3 } = Astro.props;
+---
+
+<div class="group bg-surface/60 backdrop-blur-sm rounded-2xl border border-surface-variant/30 shadow-outer-md hover:shadow-outer-lg transition-all duration-300 p-8 hover:scale-[1.02]">
+	<div class="flex items-start space-x-4 mb-6">
+		<div class={`w-16 h-16 ${category.data.bgColor} border rounded-2xl flex items-center justify-center text-2xl`}>
+			{category.data.icon}
+		</div>
+		<div class="flex-1 min-w-0">
+			<h3 class={`text-xl font-semibold ${category.data.textColor} mb-2`}>
+				{category.data.title}
+			</h3>
+			<p class="text-sm text-on-background/60 mb-2">
+				{docs.length} {docs.length === 1 ? 'doc' : 'docs'}
+			</p>
+		</div>
+	</div>
+	
+	<p class="text-on-background/80 mb-6 leading-relaxed">
+		{category.data.description}
+	</p>
+
+	<div class="space-y-3">
+		{docs.slice(0, maxDocsShown).map(doc => (
+			<a 
+				href={`/docs/${doc.id}`}
+				class={`block text-sm ${category.data.textColor} hover:text-accent font-medium p-2 rounded-lg hover:bg-primary/5 transition-all duration-200 group/link`}
+			>
+				<span class="group-hover/link:translate-x-1 transition-transform duration-200 inline-block">
+					{doc.data.title}
+				</span>
+			</a>
+		))}
+		{docs.length > maxDocsShown && (
+			<a 
+				href={`#${categoryKey}`}
+				onclick={`document.querySelector('[data-category="${categoryKey}"]')?.scrollIntoView({ behavior: 'smooth' })`}
+				class="block text-sm text-on-background/60 hover:text-on-background font-medium p-2 rounded-lg hover:bg-surface-variant/30 transition-all duration-200"
+			>
+				View all {docs.length} docs →
+			</a>
+		)}
+	</div>
+</div> 
