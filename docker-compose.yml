@@ -13,16 +13,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
 
-  # The website itself.
   server:
-    image: gitea.hostup.sh/hostup/website:${HOSTUP_WEBSITE_TAG:-latest}
+    image: ghcr.io/hostupdev/website:${HOSTUP_WEBSITE_TAG:-latest}
     networks:
       # (Optional) Enable if using Traefik for reverse proxy.
       - public
-    # (Optional) Expose service directly.
-    # Uncomment and disable deploy replication if not using Traefik or testing locally.
-    # ports:
-    #   - 8080:8080
     # (Optional) Enable replication for horizontal scaling and high availability.
     deploy:
       mode: replicated
