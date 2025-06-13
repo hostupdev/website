@@ -1,0 +1,62 @@
+name: Build and Push Container on Tag
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.AUTH_TOKEN }}
+      - name: Define Build Context
+        run: |
+          # Check if the tag is a valid main (prod) tag
+          if [[ "${GITHUB_REF}" =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "TAG_PROD=true" >> $GITHUB_ENV
+            echo "Production build."
+          else
+            echo "TAG_PROD=false" >> $GITHUB_ENV
+            echo "Development build."
+          fi
+      - name: Extract semantic version
+        if: startsWith(github.ref_name, 'v')
+        id: semver
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          MAJOR="${VERSION%%.*}"
+          MINOR="${VERSION#*.}"
+          MINOR="${MINOR%%.*}"
+          PATCH="${VERSION##*.}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "major=$MAJOR" >> $GITHUB_OUTPUT
+          echo "minor=$MINOR" >> $GITHUB_OUTPUT
+          echo "patch=$PATCH" >> $GITHUB_OUTPUT
+      - name: Build and Push for Tagged Main Branch
+        if: env.TAG_PROD == 'true'
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Containerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/website:latest
+            ghcr.io/${{ github.repository_owner }}/website:v${{ steps.semver.outputs.major }}
+            ghcr.io/${{ github.repository_owner }}/website:v${{ steps.semver.outputs.major }}.${{ steps.semver.outputs.minor }}
+            ghcr.io/${{ github.repository_owner }}/website:v${{ steps.semver.outputs.version }}
