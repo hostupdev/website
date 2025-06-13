@@ -2,7 +2,7 @@ import { defineCollection, reference, z } from "astro:content";
 import { file, glob } from "astro/loaders";
 
 const docCategories = defineCollection({
-	loader: file("src/content/docs/categories.yml"),
+	loader: file("content/docs/categories.yml"),
 	schema: z.object({
 		title: z.string(),
 		description: z.string().optional(),
@@ -16,7 +16,7 @@ const docCategories = defineCollection({
 const docs = defineCollection({
 	loader: glob({
 		pattern: "**/*{.md,.mdx}",
-		base: "src/content/docs",
+		base: "content/docs",
 	}),
 	schema: z.object({
 		title: z.string(),
