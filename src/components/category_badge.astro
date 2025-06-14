@@ -10,9 +10,9 @@ export interface Props {
 const { category, size = "md", showIcon = true } = Astro.props;
 
 const sizeClasses = {
-	sm: "px-2 py-1 text-xs",
-	md: "px-3 py-1.5 text-xs",
-	lg: "px-4 py-2 text-sm",
+	sm: "px-2 py-1 text-xs max-sm:px-1 max-sm:py-0.5 max-sm:text-xs",
+	md: "px-3 py-1.5 text-xs max-sm:px-2 max-sm:py-1 max-sm:text-xs",
+	lg: "px-4 py-2 text-sm max-sm:px-2 max-sm:py-1 max-sm:text-xs",
 };
 
 const iconSizeClasses = {

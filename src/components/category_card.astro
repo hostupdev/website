@@ -11,22 +11,22 @@ export interface Props {
 const { category, docs, categoryKey, maxDocsShown = 3 } = Astro.props;
 ---
 
-<div class="group bg-surface/60 backdrop-blur-sm rounded-2xl border border-surface-variant/30 shadow-outer-md hover:shadow-outer-lg transition-all duration-300 p-8 hover:scale-[1.02]">
-	<div class="flex items-start space-x-4 mb-6">
-		<div class={`w-16 h-16 ${category.data.bgColor} border rounded-2xl flex items-center justify-center text-2xl`}>
+<div class="group bg-surface/60 backdrop-blur-sm rounded-2xl border border-surface-variant/30 shadow-outer-md hover:shadow-outer-lg transition-all duration-300 p-8 hover:scale-[1.02] max-sm:p-3 max-sm:py-4">
+	<div class="flex items-start space-x-4 mb-6 max-sm:mb-4">
+		<div class={`w-16 h-16 ${category.data.bgColor} border rounded-2xl flex items-center justify-center text-2xl max-sm:w-10 max-sm:h-10 max-sm:text-lg`}>
 			{category.data.icon}
 		</div>
 		<div class="flex-1 min-w-0">
-			<h3 class={`text-xl font-semibold ${category.data.textColor} mb-2`}>
+			<h3 class={`text-xl font-semibold ${category.data.textColor} mb-2 max-sm:text-base`}>
 				{category.data.title}
 			</h3>
-			<p class="text-sm text-on-background/60 mb-2">
+			<p class="text-sm text-on-background/60 mb-2 max-sm:text-xs">
 				{docs.length} {docs.length === 1 ? 'doc' : 'docs'}
 			</p>
 		</div>
 	</div>
 	
-	<p class="text-on-background/80 mb-6 leading-relaxed">
+	<p class="text-on-background/80 mb-6 leading-relaxed max-sm:mb-4 max-sm:text-sm">
 		{category.data.description}
 	</p>
 

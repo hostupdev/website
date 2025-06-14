@@ -16,21 +16,21 @@ const {
 } = Astro.props;
 
 const sizeClasses = {
-	sm: "p-6",
-	md: "p-8",
-	lg: "p-12",
+	sm: "p-6 max-sm:p-3",
+	md: "p-8 max-sm:p-4",
+	lg: "p-12 max-sm:p-6",
 };
 
 const iconSizes = {
-	sm: "w-8 h-8",
-	md: "w-12 h-12",
-	lg: "w-16 h-16",
+	sm: "w-8 h-8 max-sm:w-6 max-sm:h-6",
+	md: "w-12 h-12 max-sm:w-8 max-sm:h-8",
+	lg: "w-16 h-16 max-sm:w-10 max-sm:h-10",
 };
 
 const titleSizes = {
-	sm: "text-lg",
-	md: "text-xl",
-	lg: "text-2xl",
+	sm: "text-lg max-sm:text-base",
+	md: "text-xl max-sm:text-lg",
+	lg: "text-2xl max-sm:text-xl",
 };
 ---
 

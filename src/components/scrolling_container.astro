@@ -37,7 +37,7 @@ const {
 
 
 
-<script define:vars={{ containerId, showScrollbar }}>
+<script is:inline define:vars={{ containerId, showScrollbar }}>
   function initScrollingContainer(id, showScrollbar) {
     const scrollContainer = document.getElementById(`${id}-scroll-container`);
     const topGradient = document.getElementById(`${id}-top-gradient`);

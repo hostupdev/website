@@ -8,7 +8,7 @@ interface Props {
 const { text, size = "md", className = "" } = Astro.props;
 
 // Generate unique IDs for this instance
-const buttonId = `copyBtn-${Math.random().toString(36).substr(2, 9)}`;
+const buttonId = `copyBtn-${Math.random().toString(36).substring(2, 9)}`;
 
 // Size classes
 const sizeClasses = {
@@ -71,26 +71,6 @@ const sizeClasses = {
           
         } catch (err) {
           console.error('Failed to copy: ', err);
-          
-          // Fallback for older browsers
-          try {
-            const textArea = document.createElement('textarea');
-            textArea.value = textToCopy;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            
-            // Show success feedback for fallback too
-            copyIcon.classList.add('hidden');
-            checkIcon.classList.remove('hidden');
-            setTimeout(() => {
-              copyIcon.classList.remove('hidden');
-              checkIcon.classList.add('hidden');
-            }, 2000);
-          } catch (fallbackErr) {
-            console.error('Fallback copy failed: ', fallbackErr);
-          }
         }
       });
     });
@@ -98,11 +78,4 @@ const sizeClasses = {
   
   // Initialize on page load
   document.addEventListener('astro:page-load', initCopyButtons);
-  
-  // Also initialize immediately in case astro:page-load doesn't fire
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCopyButtons);
-  } else {
-    initCopyButtons();
-  }
 </script> 

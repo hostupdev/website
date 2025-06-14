@@ -19,18 +19,18 @@ const {
 
 const cardClasses =
 	variant === "recent"
-		? "group block bg-surface/70 backdrop-blur-sm rounded-xl border border-surface-variant/40 shadow-outer-md hover:shadow-outer-lg transition-all duration-300 p-6 hover:scale-[1.02]"
-		: "group block bg-surface/50 backdrop-blur-sm rounded-lg border border-surface-variant/40 hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-200 p-4 hover:scale-[1.01]";
+		? "group block bg-surface/70 backdrop-blur-sm rounded-xl border border-surface-variant/40 shadow-outer-md hover:shadow-outer-lg transition-all duration-300 p-6 hover:scale-[1.02] max-sm:p-2"
+		: "group block bg-surface/50 backdrop-blur-sm rounded-lg border border-surface-variant/40 hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-200 p-4 hover:scale-[1.01] max-sm:p-2";
 
 const titleClasses =
 	variant === "recent"
-		? "text-lg font-semibold text-on-surface mb-3 group-hover:text-primary transition-colors"
-		: "text-base font-medium text-on-surface mb-2 group-hover:text-primary transition-colors";
+		? "text-lg font-semibold text-on-surface mb-3 group-hover:text-primary transition-colors max-sm:text-base max-sm:mb-2"
+		: "text-base font-medium text-on-surface mb-2 group-hover:text-primary transition-colors max-sm:text-sm max-sm:mb-1";
 
 const descriptionClasses =
 	variant === "recent"
-		? "text-on-surface/60 text-sm leading-relaxed"
-		: "text-sm text-on-surface/60 leading-relaxed line-clamp-2";
+		? "text-on-surface/60 text-sm leading-relaxed max-sm:text-xs"
+		: "text-sm text-on-surface/60 leading-relaxed line-clamp-2 max-sm:text-xs";
 ---
 
 <a href={`/docs/${doc.id}`} class={cardClasses}>
