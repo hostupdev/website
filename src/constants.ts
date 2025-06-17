@@ -12,17 +12,17 @@ export const GIT_URLS = {
 export const SITE = {
 	TITLE: "Hostup",
 	// Keep under 500 characters
-	DESCRIPTION: "Hostup is a platform for simplifying your hosting needs.",
+	DESCRIPTION: "Hostup makes it easy to manage your self-hosted services.",
 	// Keep uder 100 characters
-	ABSTRACT: "Hostup is a platform for simplifying your hosting needs.",
-	ICON: "/vectors/hostup-logo.svg",
+	ABSTRACT: "Hostup makes it easy to manage your self-hosted services.",
+	ICON: "/vectors/hostup-logo-dark.svg",
 	URL: "https://hostup.sh",
-	DEFAULT_OG_IMAGE: "/vectors/hostup-logo.svg",
+	DEFAULT_OG_IMAGE: "/vectors/hostup-logo-dark.svg",
 	LOCALE: "en_US",
 };
 
 export const META = {
-	DARK_THEME_COLOR: "#121315",
+	DARK_THEME_COLOR: "#151b24",
 	AUTHOR: "Chase Baucom",
 };
 

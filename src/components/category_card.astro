@@ -11,7 +11,7 @@ export interface Props {
 const { category, docs, categoryKey, maxDocsShown = 3 } = Astro.props;
 ---
 
-<div class="group bg-surface/60 backdrop-blur-sm rounded-2xl border border-surface-variant/30 shadow-outer-md hover:shadow-outer-lg transition-all duration-300 p-8 hover:scale-[1.02] max-sm:p-3 max-sm:py-4">
+<div class="group bg-surface/60 backdrop-blur-sm rounded-2xl border border-surface-variant/30 shadow-outer-md hover:shadow-outer-lg transition-all duration-300 p-6 hover:scale-[1.02]">
 	<div class="flex items-start space-x-4 mb-6 max-sm:mb-4">
 		<div class={`w-16 h-16 ${category.data.bgColor} border rounded-2xl flex items-center justify-center text-2xl max-sm:w-10 max-sm:h-10 max-sm:text-lg`}>
 			{category.data.icon}

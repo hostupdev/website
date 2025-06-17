@@ -141,7 +141,7 @@ const docHomeLink: SidebarHomeLink = {
   )}
 
     <!-- Floating Action Buttons (Top Right) -->
-  <div class="fixed top-6 right-6 z-50 flex flex-col-reverse xl:flex-row gap-3">
+  <div class="fixed top-6 right-6 z-30 flex flex-col-reverse xl:flex-row gap-3">
     <!-- Scroll to Top Button -->
     <button
       id="scrollToTopBtn"
@@ -201,7 +201,7 @@ const docHomeLink: SidebarHomeLink = {
 
         <!-- Desktop Sidebar Navigation -->
         <div class="hidden lg:block lg:w-80 lg:flex-shrink-0">
-          <div class="fixed top-20 left-0 h-[calc(100vh-5rem)] w-80 p-6">
+          <div class="fixed top-18 left-0 h-[calc(100vh-5rem)] w-80 p-6">
             <div id="desktop-sidebar-content" class="h-full">
               <Sidebar 
                 categories={sidebarCategories}
@@ -215,12 +215,12 @@ const docHomeLink: SidebarHomeLink = {
 
         <!-- Main Content Area -->
         <div class="flex-1 min-w-0">
-          <main class="py-12 px-4 sm:px-6 lg:px-8">
+          <main class="py-24 px-4">
             <div class="max-w-4xl mx-auto">
               <!-- Header -->
               <header class="mb-12">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
-                  <div class="flex items-center space-x-3 text-sm text-on-background/60">
+                  <div class="flex items-center space-x-3 text-caption text-on-background/60">
                     <a href="/docs" class="hover:text-primary transition-colors font-medium">
                       Documentation
                     </a>
@@ -234,17 +234,17 @@ const docHomeLink: SidebarHomeLink = {
                     </span>
                   </div>
                   {document.lastUpdated && (
-                    <div class="text-sm text-on-background/50 bg-surface/60 px-3 py-1.5 rounded-full border border-surface-variant/30 whitespace-nowrap">
+                    <div class="text-caption text-on-background/50 bg-surface/60 px-3 py-1.5 rounded-full border border-surface-variant/30 whitespace-nowrap">
                       Updated: {new Date(document.lastUpdated).toLocaleDateString()}
                     </div>
                   )}
                 </div>
                 
                 <div class="space-y-4">
-                  <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent leading-tight break-words">
+                  <h1 class="text-title text-on-background">
                     {document.title}
                   </h1>
-                  <p class="text-lg sm:text-xl text-on-background/70 leading-relaxed">
+                  <p class="text-body text-on-background/60">
                     {document.description}
                   </p>
                 </div>
@@ -252,7 +252,7 @@ const docHomeLink: SidebarHomeLink = {
 
               <!-- Article Content -->
               <article class="bg-surface/60 backdrop-blur-sm rounded-2xl border border-surface-variant/30 shadow-outer-lg overflow-hidden">
-                <div class="prose prose-lg dark:prose-invert max-w-none p-6 sm:p-8 lg:p-12 prose-pre:overflow-x-auto prose-code:break-words">
+                <div class="max-w-none p-6 sm:p-8">
                   <slot />
                 </div>
               </article>
@@ -286,11 +286,11 @@ const docHomeLink: SidebarHomeLink = {
         {headings.length > 0 && (
           <div 
             id="mobileToc"
-            class="fixed top-0 right-0 h-full w-80 bg-background z-50 transform translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col"
+            class="fixed top-0 right-0 h-full w-80 bg-background z-40 transform translate-x-full transition-transform duration-300 ease-in-out xl:hidden flex flex-col"
           >
             <div class="flex flex-col h-full p-6">
               <div class="flex justify-between items-center mb-6 flex-shrink-0">
-                <h2 class="text-lg font-semibold text-on-background">On this page</h2>
+                <h2 class="text-lg font-semibold text-on-background">Table of Contents</h2>
                 <button
                   id="closeToc"
                   class="p-2 hover:bg-surface/60 rounded-lg transition-colors"
@@ -310,7 +310,7 @@ const docHomeLink: SidebarHomeLink = {
 
         <!-- Desktop Table of Contents (Right Sidebar) -->
         <div class="hidden xl:block xl:w-64 xl:flex-shrink-0">
-          <div class="fixed top-20 right-0 h-[calc(100vh-5rem)] w-64 p-6">
+          <div class="fixed top-18 right-0 h-[calc(100vh-5rem)] w-64 p-6">
             <div id="desktop-toc-content" class="h-full">
               <TableOfContents headings={headings} context="desktop" />
             </div>

@@ -2,7 +2,13 @@
 import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"a"> {
-	variant?: "primary" | "secondary" | "outline" | "ghost" | "gradient";
+	variant?:
+		| "primary"
+		| "secondary"
+		| "outline"
+		| "ghost"
+		| "gradient"
+		| "frosted";
 	enableScale?: boolean;
 	size?: "sm" | "md" | "lg" | "xl";
 	disabled?: boolean;
@@ -68,6 +74,10 @@ const variantClasses = {
 		"bg-clip-padding",
 		"hover:shadow-outer-lg hover:from-primary/90 hover:to-accent/90",
 		"active:from-primary/80 active:to-accent/80",
+	],
+	frosted: [
+		"bg-white/10 border-white/30 text-white backdrop-blur-sm",
+		"hover:bg-white/25 hover:border-white/50",
 	],
 };
 

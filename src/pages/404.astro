@@ -6,7 +6,7 @@ import MainLayout from "@layouts/main.astro";
 
 <MainLayout title="Hostup - Page Not Found">
   <section
-    class="flex min-h-dvh flex-col items-center justify-center p-6 pt-24 text-center"
+    class="flex min-h-dvh flex-col items-center justify-center px-6 pt-18 text-center"
   >
     <div class="max-w-2xl">
       <!-- Terminal-style error box -->
@@ -32,13 +32,13 @@ import MainLayout from "@layouts/main.astro";
           </div>
         </div>
         
-        <h1 class="text-8xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
+        <h1 class="text-hero text-gradient">
           404
         </h1>
         <h2 class="text-3xl font-semibold text-on-surface mb-4">
           Route Not Found
         </h2>
-        <p class="text-on-surface/70 mb-6 text-lg leading-relaxed">
+        <p class="text-body text-on-surface/60 max-w-xs sm:max-w-2xl mx-auto mb-6">
           Looks like this page went off the grid. The route you're looking for 
           might have been moved, removed, or never existed in our service registry.
         </p>
@@ -60,7 +60,7 @@ import MainLayout from "@layouts/main.astro";
       
       <!-- Action buttons -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <ActionButton href="/" variant="primary" enableScale size="lg">
+        <ActionButton href="/" variant="primary" enableScale>
           Return Home
         </ActionButton>
       </div>

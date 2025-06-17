@@ -1,9 +1,7 @@
 ---
-const proseClasses = [
-	// Base prose classes
-	"prose prose-lg max-w-none text-on-surface",
+import "@styles/prose.css";
 
-	// Headings
+const proseHeadingClasses = [
 	"prose-headings:text-on-surface prose-headings:font-semibold prose-headings:leading-tight prose-headings:mt-8 prose-headings:mb-4 prose-headings:scroll-mt-20",
 	"prose-h1:text-4xl prose-h1:font-bold prose-h1:bg-gradient-to-r prose-h1:from-primary prose-h1:to-accent prose-h1:bg-clip-text prose-h1:text-transparent prose-h1:mt-0 prose-h1:mb-6",
 	"prose-h2:text-3xl prose-h2:text-primary prose-h2:border-b prose-h2:border-surface-variant prose-h2:pb-2",
@@ -11,46 +9,60 @@ const proseClasses = [
 	"prose-h4:text-xl prose-h4:text-secondary",
 	"prose-h5:text-lg",
 	"prose-h6:text-base prose-h6:text-on-surface-variant prose-h6:uppercase prose-h6:tracking-wider",
+];
 
-	// Text elements
+const proseTextClasses = [
 	"prose-p:my-5 prose-p:text-on-surface prose-p:leading-7",
 	"prose-strong:text-on-surface prose-strong:font-semibold",
 	"prose-em:text-on-surface prose-em:italic",
+];
 
-	// Lists
+const proseListClasses = [
 	"prose-ul:my-5 prose-ul:pl-6 prose-ol:my-5 prose-ol:pl-6",
 	"prose-li:my-2 prose-li:text-on-surface",
+];
 
-	// Links
+const proseLinkClasses = [
 	"prose-a:text-primary prose-a:underline prose-a:decoration-primary prose-a:decoration-1 prose-a:underline-offset-2 prose-a:font-medium prose-a:transition-all prose-a:duration-200",
 	"hover:prose-a:text-accent hover:prose-a:decoration-accent hover:prose-a:decoration-2",
+];
 
-	// Code
+const proseCodeClasses = [
 	"prose-code:text-accent prose-code:bg-surface-variant prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm prose-code:font-medium prose-code:border prose-code:border-surface-variant",
 	"prose-pre:bg-surface prose-pre:border prose-pre:border-surface-variant prose-pre:rounded-xl prose-pre:p-6 prose-pre:my-7 prose-pre:overflow-x-auto prose-pre:text-sm prose-pre:leading-7 prose-pre:shadow-md",
 	"prose-pre:prose-code:bg-transparent prose-pre:prose-code:border-0 prose-pre:prose-code:p-0 prose-pre:prose-code:font-normal prose-pre:prose-code:text-inherit prose-pre:prose-code:rounded-none",
+];
 
-	// Blockquotes
+const proseBlockquoteClasses = [
 	"prose-blockquote:italic prose-blockquote:border-l-4 prose-blockquote:border-accent prose-blockquote:pl-6 prose-blockquote:my-7 prose-blockquote:bg-surface prose-blockquote:py-4 prose-blockquote:rounded-r-lg prose-blockquote:relative",
 	"prose-blockquote:prose-p:text-on-surface-variant prose-blockquote:prose-p:my-2",
+];
 
-	// Tables
+const proseTableClasses = [
 	"prose-table:w-full prose-table:table-auto prose-table:text-left prose-table:my-8 prose-table:border-separate prose-table:border-spacing-0 prose-table:border prose-table:border-surface-variant prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-md",
 	"prose-thead:bg-surface prose-thead:border-b prose-thead:border-surface-variant",
 	"prose-th:text-on-surface prose-th:font-semibold prose-th:align-bottom prose-th:py-5 prose-th:px-8 prose-th:bg-gradient-to-r prose-th:from-primary prose-th:to-accent prose-th:bg-clip-text",
 	"prose-tr:border-b prose-tr:border-surface-variant hover:prose-tr:bg-surface last:prose-tr:border-b-0",
 	"prose-td:py-5 prose-td:px-8 prose-td:align-baseline prose-td:text-on-surface",
+];
 
-	// Other elements
+const proseOtherClasses = [
 	"prose-hr:border-0 prose-hr:h-px prose-hr:bg-gradient-to-r prose-hr:from-transparent prose-hr:via-accent prose-hr:to-transparent prose-hr:my-12",
 	"prose-img:my-8 prose-img:rounded-xl prose-img:shadow-md prose-img:border prose-img:border-surface-variant",
 	"prose-figure:my-8",
 	"prose-figcaption:text-on-surface-variant prose-figcaption:text-sm prose-figcaption:text-center prose-figcaption:mt-3 prose-figcaption:italic",
+];
 
-	// Responsive
-	"max-sm:text-base max-sm:prose-h1:text-3xl max-sm:prose-h2:text-2xl max-sm:prose-h3:text-xl",
-	"max-sm:prose-pre:px-4 max-sm:prose-pre:-mx-4 max-sm:prose-pre:rounded-lg",
-	"max-sm:prose-table:text-sm max-sm:prose-th:py-3 max-sm:prose-th:px-4 max-sm:prose-td:py-3 max-sm:prose-td:px-4",
+const proseClasses = [
+	"prose prose-lg max-w-none text-on-surface",
+	...proseHeadingClasses,
+	...proseTextClasses,
+	...proseListClasses,
+	...proseLinkClasses,
+	...proseCodeClasses,
+	...proseBlockquoteClasses,
+	...proseTableClasses,
+	...proseOtherClasses,
 ].join(" ");
 ---
 <div class={proseClasses}>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+    <g id="Dark-Logo" serif:id="Dark Logo" transform="matrix(1.09798,0,0,1,-38.2286,-1.77636e-15)">
+        <rect x="34.817" y="0" width="29.145" height="32" style="fill:none;"/>
+        <clipPath id="_clip1">
+            <rect x="34.817" y="0" width="29.145" height="32"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g id="Dark-logo" serif:id="Dark logo" transform="matrix(1.57424,0,0,1.60682,32.8035,-5.99146)">
+                <path d="M19.793,8.708L19.793,18.665C19.793,21.413 17.719,23.644 15.164,23.644L5.908,23.644C3.353,23.644 1.279,21.413 1.279,18.665L1.279,8.708C1.279,5.96 3.353,3.729 5.908,3.729L15.164,3.729C17.719,3.729 19.793,5.96 19.793,8.708Z" style="fill:url(#_Linear2);"/>
+                <clipPath id="_clip3">
+                    <path d="M19.793,8.708L19.793,18.665C19.793,21.413 17.719,23.644 15.164,23.644L5.908,23.644C3.353,23.644 1.279,21.413 1.279,18.665L1.279,8.708C1.279,5.96 3.353,3.729 5.908,3.729L15.164,3.729C17.719,3.729 19.793,5.96 19.793,8.708Z"/>
+                </clipPath>
+                <g clip-path="url(#_clip3)">
+                    <g transform="matrix(0.578545,0,0,0.622348,3.59329,6.82578)">
+                        <path d="M7,17C6.999,17 6.997,17 6.996,17C4.801,17 2.996,15.194 2.996,13C2.996,11.135 4.3,9.505 6.12,9.097C6.046,8.752 6.009,8.401 6.009,8.048C6.009,5.305 8.266,3.047 11.01,3.047C13.359,3.047 15.407,4.703 15.9,7C15.9,7 16.003,7 16.005,7C18.748,7 21.005,9.257 21.005,12C21.005,14.369 19.322,16.429 17,16.9M15,12L12,9M12,9L9,12M12,9L12,19" style="fill-opacity:0;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear2" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(18.5134,19.9151,-18.5134,19.9151,1.27927,3.72878)"><stop offset="0" style="stop-color:rgb(255,129,82);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(92,133,255);stop-opacity:1"/></linearGradient>
+    </defs>
+</svg>
