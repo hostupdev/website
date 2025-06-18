@@ -5,7 +5,7 @@ import { GIT_URLS } from "@constants";
 import MainLayout from "@layouts/main.astro";
 ---
 
-<MainLayout title="Hostup - Bootstrap Self-Hosted Services">
+<MainLayout title="Hostup - Run Your Own Apps at Home">
   <!-- Hero Section -->
   <section
     id="hero"
@@ -13,13 +13,13 @@ import MainLayout from "@layouts/main.astro";
   >
     <div class="text-center space-y-4 sm:space-y-6 max-w-xl sm:max-w-5xl mb-12 sm:mb-24">
       <h1 class="text-hero text-gradient">
-        Bootstrap Self-Hosted Services
+        Run Your Own Apps at Home
       </h1>
       <p
         class="text-hero-sub text-on-background/60 max-w-xs sm:max-w-xl mx-auto"
       >
-        Quickly deploy and manage self-hosted services. A simple, opinionated 
-        framework designed for beginners and pros alike.
+        Set up your own private cloud, password manager, file storage, and more. 
+        No technical expertise required—just follow the simple guided setup.
       </p>
     </div>
 
@@ -50,7 +50,7 @@ import MainLayout from "@layouts/main.astro";
         <div class="p-4 sm:p-6">
           <!-- Command Line -->
           <div class="flex items-center space-x-3 bg-background/50 rounded-md p-3 border border-surface-variant/30 mb-4">
-            <span class="text-accent text-sm">$</span>
+            <span class="text-accent text-sm select-none">$</span>
             <code class="flex-1 font-mono text-on-surface select-all">ssh hostup.sh</code>
             <CopyButton text="ssh hostup.sh" />
           </div>
@@ -60,18 +60,18 @@ import MainLayout from "@layouts/main.astro";
             <!-- Primary Action -->
             <div class="text-center">
               <ActionButton href="/docs" variant="gradient" size="lg" enableScale class="w-full text-base font-semibold py-3">
-                🚀 Start Self-Hosting
+                🚀 Get Started
               </ActionButton>
             </div>
             
             <!-- Secondary Info & Action -->
             <div class="text-center space-y-4">
               <p class="text-on-surface/60 text-caption">
-                No downloads • No setup • Just run the command above
+                No downloads • No setup • Try it instantly
               </p>
               <div class="flex justify-center">
-                <ActionButton href="#features" variant="ghost" size="sm" class="text-caption text-accent hover:text-accent hover:bg-accent/5 border-none underline decoration-dotted underline-offset-2">
-                  or explore features first →
+                <ActionButton href="#why-hostup" variant="ghost" size="sm" class="text-caption text-accent hover:text-accent hover:bg-accent/5 border-none underline decoration-dotted underline-offset-2">
+                  or see what makes it special →
                 </ActionButton>
               </div>
             </div>
@@ -81,76 +81,79 @@ import MainLayout from "@layouts/main.astro";
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section id="features" class="py-14 sm:py-20 bg-gradient-to-b from-surface-variant/25 to-surface/40 dark:from-surface-variant/10 dark:to-surface/25">
+  <!-- Benefits Section -->
+  <section id="why-hostup" class="py-14 sm:py-20 bg-gradient-to-b from-surface-variant/25 to-surface/40 dark:from-surface-variant/10 dark:to-surface/25">
     <div class="max-w-2xl sm:max-w-6xl mx-auto">
       <div class="text-center mb-10 sm:mb-16">
         <h2 class="text-title text-on-surface mb-4">
-          Three Core Components
+          Why Choose Hostup?
         </h2>
         <p class="text-body text-on-surface/70 max-w-xs sm:max-w-2xl mx-auto">
-          Hostup is built around three pillars to make self-hosting accessible, powerful, and community-driven.
+          The easiest way to run your own apps and take control of your digital life.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 px-6 gap-y-8 gap-x-4 lg:gap-8 place-items-center items-stretch">
-        <!-- Interactive, Beginner-Friendly TUI -->
+        <!-- Simple Setup -->
         <div class="bg-surface border border-primary/20 dark:border-primary/10 rounded-lg p-6 max-w-lg shadow-outer-md hover:shadow-outer-lg transition-all flex flex-col">
           <div class="text-primary mb-4">
-            <!-- Terminal/Console Icon -->
+            <!-- Simple Setup Icon -->
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <rect x="3" y="5" width="18" height="14" rx="2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect>
-              <path d="M8 9l3 3-3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M13 15h3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
           </div>
           <div class="flex items-center mb-2">
-            <h3 class="text-heading font-semibold">Interactive, Beginner-Friendly TUI</h3>
+            <h3 class="text-heading font-semibold">Simple Step-by-Step Setup</h3>
           </div>
           <p class="text-body text-on-surface/70 mb-6 flex-grow">
-            Hostup's Terminal User Interface guides you step-by-step through setup and management. No prior DevOps experience needed—just follow the prompts and get your services running in minutes.
+            Hostup asks simple questions and handles all the complex stuff automatically. No confusing commands or technical files to edit. If you can fill out a form, you can use Hostup.
           </p>
           <div class="text-caption font-mono text-primary bg-background/70 dark:bg-background/50 rounded p-2 mt-auto">
-            Guided setup · No YAML · All skill levels
+            Guided questions · Automatic setup · No errors
           </div>
         </div>
 
-        <!-- Powerful Yet Simple -->
+        <!-- Works on Any Computer -->
         <div class="bg-surface border border-accent/20 dark:border-accent/10 rounded-lg p-6 max-w-lg shadow-outer-md hover:shadow-outer-lg transition-all flex flex-col">
           <div class="text-accent mb-4">
-            <!-- Lightning Bolt Icon -->
+            <!-- Computer Icon -->
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polygon>
+              <rect x="4" y="3" width="16" height="11" rx="1" stroke-width="2"></rect>
+              <path d="M4 14h16" stroke-width="2"></path>
+              <path d="M8 21h8" stroke-width="2"></path>
+              <path d="M12 17v4" stroke-width="2"></path>
             </svg>
           </div>
           <div class="flex items-center mb-2">
-            <h3 class="text-heading font-semibold">Powerful Yet Simple</h3>
+            <h3 class="text-heading font-semibold">Works on Any Computer</h3>
           </div>
           <p class="text-body text-on-surface/70 mb-6 flex-grow">
-            Hostup combines robust features with an intuitive workflow. Deploy your first service or manage a fleet—smart defaults and clear commands keep things easy, without sacrificing flexibility.
+            Use that old laptop, a mini PC, or even a Raspberry Pi. Hostup works on Windows, Mac, and Linux. No need to buy expensive new hardware—use what you already have.
           </p>
           <div class="text-caption font-mono text-accent bg-background/70 dark:bg-background/50 rounded p-2 mt-auto">
-            One-command deploy · Smart defaults · Advanced options
+            Any device · Any OS · Use what you have
           </div>
         </div>
 
-        <!-- Community-Driven -->
+        <!-- Tons of Apps -->
         <div class="bg-surface border border-secondary/20 dark:border-secondary/10 rounded-lg p-6 max-w-lg shadow-outer-md hover:shadow-outer-lg transition-all flex flex-col">
           <div class="text-secondary mb-4">
-            <!-- Group/People Icon -->
+            <!-- Apps Grid Icon -->
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <circle cx="12" cy="7" r="4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
-              <path d="M5.5 21a7.5 7.5 0 0 1 13 0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <rect x="3" y="3" width="7" height="7" stroke-width="2"></rect>
+              <rect x="14" y="3" width="7" height="7" stroke-width="2"></rect>
+              <rect x="3" y="14" width="7" height="7" stroke-width="2"></rect>
+              <rect x="14" y="14" width="7" height="7" stroke-width="2"></rect>
             </svg>
           </div>
           <div class="flex items-center mb-2">
-            <h3 class="text-heading font-semibold">Community-Driven</h3>
+            <h3 class="text-heading font-semibold">Tons of Apps Ready to Go</h3>
           </div>
           <p class="text-body text-on-surface/70 mb-6 flex-grow">
-            Hostup is open source and shaped by its users. Contribute new service templates, share best practices, or get help from a growing community of self-hosters.
+            From password managers to your own personal Netflix, we have apps for everything. Each one comes pre-configured and tested, so you know it'll work perfectly.
           </p>
           <div class="text-caption font-mono text-secondary bg-background/70 dark:bg-background/50 rounded p-2 mt-auto">
-            Open source · Community registry · Collaborative
+            Pre-tested · Ready to use · Always growing
           </div>
         </div>
       </div>
@@ -164,7 +167,7 @@ import MainLayout from "@layouts/main.astro";
           How It Works
         </h2>
         <p class="text-body text-on-background/70">
-          From zero to self-hosted in minutes
+          From zero to running your own apps in just a few minutes
         </p>
       </div>
 
@@ -181,9 +184,9 @@ import MainLayout from "@layouts/main.astro";
             <div class="sm:ml-4 flex-1 mb-16">
               <div class="flex items-center mb-2">
                 <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-body shadow z-10 mr-4 sm:hidden">1</div>
-                <h3 class="text-heading font-semibold">Connect Instantly</h3>
+                <h3 class="text-heading font-semibold">Start Hostup</h3>
               </div>
-              <p class="text-body text-on-background/70 mb-6">Run <code class="bg-surface px-1 py-0.5 rounded font-mono text-body">ssh hostup.sh</code> in your terminal. No downloads required.</p>
+              <p class="text-body text-on-background/70 mb-6">Just copy and paste one command into your terminal. Hostup opens up and you're ready to go—no complicated installation required.</p>
               <div class="rounded-md p-3 bg-surface border border-surface-variant inline-block">
                 <span class="mr-2 text-caption text-accent select-none">$</span>
                 <code class="mr-6 text-caption font-mono text-on-surface select-all">ssh hostup.sh</code>
@@ -202,16 +205,47 @@ import MainLayout from "@layouts/main.astro";
             <div class="sm:ml-4 flex-1 mb-16">
               <div class="flex items-center mb-2">
                 <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-body shadow z-10 mr-4 sm:hidden">2</div>
-                <h3 class="text-heading font-semibold">Secure Your Connection</h3>
+                <h3 class="text-heading font-semibold">Pick an App</h3>
               </div>
-              <p class="text-body text-on-background/70 mb-6">Accept the SSH fingerprint to verify and protect your setup.</p>
-              <div class="bg-surface border border-surface-variant p-3 rounded-lg inline-block">
-                <div class="text-caption font-mono text-left">
-                  <span class="text-accent">$ ssh hostup.sh</span><br /><br />
-                  <span class="text-accent">The authenticity of host 'hostup.sh &lt;host&gt;' can't be established.</span><br />
-                  <span class="text-accent">ED25519 key fingerprint is &lt;key&gt;.</span><br />
-                  <span class="text-accent">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span><br />
-                  <span class="text-primary">&gt; yes</span>
+              <p class="text-body text-on-background/70 mb-6">Browse through our collection of apps and choose what you want to run. Need your own cloud storage? Want a password manager? We've got you covered.</p>
+              <div class="bg-surface border border-surface-variant rounded-lg p-3 text-caption font-mono inline-block">
+                <div class="rounded-lg p-3 text-caption font-mono text-left">
+                  <div class="flex items-center mb-2">
+                    <span class="inline-block align-middle mr-2">
+                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-primary bg-primary text-on-primary" style="font-size:0.9em;">✔</span>
+                    </span>
+                    <span class="text-accent">Nextcloud (your own Google Drive)</span>
+                  </div>
+                  <div class="flex items-center mb-2">
+                    <span class="inline-block align-middle mr-2">
+                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-surface-variant bg-transparent" style="font-size:0.9em;">&nbsp;</span>
+                    </span>
+                    <span class="text-accent">Vaultwarden (password manager)</span>
+                  </div>
+                  <div class="flex items-center mb-2">
+                    <span class="inline-block align-middle mr-2">
+                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-surface-variant bg-transparent" style="font-size:0.9em;">&nbsp;</span>
+                    </span>
+                    <span class="text-accent">Jellyfin (your own Netflix)</span>
+                  </div>
+                  <div class="flex items-center mb-2">
+                    <span class="inline-block align-middle mr-2">
+                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-surface-variant bg-transparent" style="font-size:0.9em;">&nbsp;</span>
+                    </span>
+                    <span class="text-accent">Gitea (code storage)</span>
+                  </div>
+                  <div class="flex items-center">
+                    <span class="inline-block align-middle mr-2">
+                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-surface-variant bg-transparent" style="font-size:0.9em;">&nbsp;</span>
+                    </span>
+                    <span class="text-accent">Paperless-ngx (organize documents)</span>
+                  </div>
+                  <div class="flex items-center mt-2">
+                    <span class="inline-block align-middle mr-2">
+                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-transparent bg-transparent" style="font-size:0.9em;">&nbsp;</span>
+                    </span>
+                    <span class="text-on-surface/40">...and many more</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -227,97 +261,9 @@ import MainLayout from "@layouts/main.astro";
             <div class="sm:ml-4 flex-1 mb-16">
               <div class="flex items-center mb-2">
                 <div class="w-8 h-8 rounded-full bg-accent text-on-accent flex items-center justify-center font-bold text-body shadow z-10 mr-4 sm:hidden">3</div>
-                <h3 class="text-heading font-semibold">Choose Your Experience</h3>
+                <h3 class="text-heading font-semibold">Answer Simple Questions</h3>
               </div>
-              <p class="text-body text-on-background/70 mb-6">Use Hostup instantly in your terminal, or install locally for offline usage. No setup required to get started—just connect and use!</p>
-              <div class="bg-surface border border-surface-variant rounded-lg p-3 text-caption font-mono inline-block">
-                <div class="rounded-lg p-3 text-caption font-mono text-left">
-                  <div class="flex items-center mb-2">
-                    <span class="inline-block align-middle mr-2">
-                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-primary bg-primary text-on-primary" style="font-size:0.9em;">✔</span>
-                    </span>
-                    <span class="text-accent">Run live in your terminal over ssh</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="inline-block align-middle mr-2">
-                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-surface-variant bg-transparent" style="font-size:0.9em;">&nbsp;</span>
-                    </span>
-                    <span class="text-accent">Install locally for offline usage</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="flex min-h-[120px] flex-col sm:flex-row">
-            <!-- Desktop timeline -->
-            <div class="hidden sm:flex flex-col items-center w-20 relative">
-              <div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-lg shadow-lg z-10">4</div>
-              <div class="flex-1 w-1 bg-gradient-to-b from-primary/30 to-secondary/30 z-0"></div>
-            </div>
-            <div class="sm:ml-4 flex-1 mb-16">
-              <div class="flex items-center mb-2">
-                <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-body shadow z-10 mr-4 sm:hidden">4</div>
-                <h3 class="text-heading font-semibold">Pick Services from the Registry</h3>
-              </div>
-              <p class="text-body text-on-background/70 mb-6">Browse and select from a curated registry of self-hosted services. Choose popular apps or discover new ones, all ready to deploy.</p>
-              <div class="bg-surface border border-surface-variant rounded-lg p-3 text-caption font-mono inline-block">
-                <div class="rounded-lg p-3 text-caption font-mono text-left">
-                  <div class="flex items-center mb-2">
-                    <span class="inline-block align-middle mr-2">
-                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-primary bg-primary text-on-primary" style="font-size:0.9em;">✔</span>
-                    </span>
-                    <span class="text-accent">Nextcloud</span>
-                  </div>
-                  <div class="flex items-center mb-2">
-                    <span class="inline-block align-middle mr-2">
-                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-primary bg-primary text-on-primary" style="font-size:0.9em;">✔</span>
-                    </span>
-                    <span class="text-accent">Vaultwarden</span>
-                  </div>
-                  <div class="flex items-center mb-2">
-                    <span class="inline-block align-middle mr-2">
-                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-surface-variant bg-transparent" style="font-size:0.9em;">&nbsp;</span>
-                    </span>
-                    <span class="text-accent">Jellyfin</span>
-                  </div>
-                  <div class="flex items-center mb-2">
-                    <span class="inline-block align-middle mr-2">
-                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-surface-variant bg-transparent" style="font-size:0.9em;">&nbsp;</span>
-                    </span>
-                    <span class="text-accent">Gitea</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="inline-block align-middle mr-2">
-                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-surface-variant bg-transparent" style="font-size:0.9em;">&nbsp;</span>
-                    </span>
-                    <span class="text-accent">Paperless</span>
-                  </div>
-                  <div class="flex items-center mt-2">
-                    <span class="inline-block align-middle mr-2">
-                      <span class="w-4 h-4 inline-flex items-center justify-center rounded border border-transparent bg-transparent" style="font-size:0.9em;">&nbsp;</span>
-                    </span>
-                    <span class="text-on-surface/40">and more...</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="flex min-h-[120px] flex-col sm:flex-row">
-            <!-- Desktop timeline -->
-            <div class="hidden sm:flex flex-col items-center w-20 relative">
-              <div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-lg shadow-lg z-10">5</div>
-              <div class="flex-1 w-1 bg-gradient-to-b from-secondary/30 to-accent/30 z-0"></div>
-            </div>
-            <div class="sm:ml-4 flex-1 mb-16">
-              <div class="flex items-center mb-2">
-                <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-body shadow z-10 mr-4 sm:hidden">5</div>
-                <h3 class="text-heading font-semibold">Configure with Ease</h3>
-              </div>
-              <p class="text-body text-on-background/70 mb-6">Customize your services with guided prompts. No YAML or guesswork—just answer a few questions and you're set.</p>
+              <p class="text-body text-on-background/70 mb-6">Hostup asks you easy questions like "What password do you want?" and "What should we call this?" No technical knowledge needed—just answer like you're setting up any other app.</p>
               <!-- Graphic -->
               <div class="bg-surface border border-surface-variant rounded-lg p-6">
                 <!-- Input Files -->
@@ -329,19 +275,19 @@ import MainLayout from "@layouts/main.astro";
                       </svg>
                     </div>
                     <div class="min-w-0 flex-1">
-                      <div class="text-caption font-mono text-secondary font-semibold break-all">compose.template.yml</div>
-                      <div class="text-caption text-on-background/60">Service blueprint</div>
+                      <div class="text-caption font-mono text-secondary font-semibold break-all">App Template</div>
+                      <div class="text-caption text-on-background/60">Pre-made recipe</div>
                     </div>
                   </div>
                   <div class="flex items-center space-x-2 bg-background/60 rounded-lg p-3 border border-accent-variant/20">
                     <div class="flex-shrink-0">
                       <svg class="w-5 h-5 text-accent-variant" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
                     </div>
                     <div class="min-w-0 flex-1">
-                      <div class="text-caption font-mono text-accent-variant font-semibold break-all">.env.template</div>
-                      <div class="text-caption text-on-background/60">Default values</div>
+                      <div class="text-caption font-mono text-accent-variant font-semibold break-all">Your Answers</div>
+                      <div class="text-caption text-on-background/60">Simple questions</div>
                     </div>
                   </div>
                   <div class="flex items-center space-x-2 bg-background/60 rounded-lg p-3 border border-accent/20">
@@ -352,8 +298,8 @@ import MainLayout from "@layouts/main.astro";
                       </svg>
                     </div>
                     <div class="min-w-0 flex-1">
-                      <div class="text-caption font-mono text-accent font-semibold break-all">service.yml</div>
-                      <div class="text-caption text-on-background/60">Configuration definition</div>
+                      <div class="text-caption font-mono text-accent font-semibold break-all">Hostup Magic</div>
+                      <div class="text-caption text-on-background/60">Does the hard work</div>
                     </div>
                   </div>
                 </div>
@@ -375,13 +321,13 @@ import MainLayout from "@layouts/main.astro";
                     <div class="flex-shrink-0">
                       <div class="w-8 h-8 bg-primary text-on-primary rounded-lg flex items-center justify-center">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                       </div>
                     </div>
                     <div class="min-w-0 flex-1">
-                      <div class="text-sm font-mono text-primary font-semibold break-all">compose.yml</div>
-                      <div class="text-xs text-on-surface/60">Configured service</div>
+                      <div class="text-sm font-mono text-primary font-semibold break-all">Your App</div>
+                      <div class="text-xs text-on-surface/60">Ready to use</div>
                     </div>
                     <div class="flex-shrink-0">
                       <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -393,13 +339,13 @@ import MainLayout from "@layouts/main.astro";
                     <div class="flex-shrink-0">
                       <div class="w-8 h-8 bg-primary text-on-primary rounded-lg flex items-center justify-center">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
                       </div>
                     </div>
                     <div class="min-w-0 flex-1">
-                      <div class="text-sm font-mono text-primary font-semibold break-all">.env</div>
-                      <div class="text-xs text-on-surface/60">Securely stored values</div>
+                      <div class="text-sm font-mono text-primary font-semibold break-all">Settings</div>
+                      <div class="text-xs text-on-surface/60">Safe & secure</div>
                     </div>
                     <div class="flex-shrink-0">
                       <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -412,7 +358,7 @@ import MainLayout from "@layouts/main.astro";
             </div>
           </div>
 
-          <!-- Step 6: Last step with checkmark, no line below -->
+          <!-- Step 4: Last step with checkmark, no line below -->
           <div class="flex min-h-[120px] flex-col sm:flex-row">
             <!-- Desktop timeline -->
             <div class="hidden sm:flex flex-col items-center w-20 relative">
@@ -430,13 +376,13 @@ import MainLayout from "@layouts/main.astro";
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 class="text-heading font-semibold">Deploy & Manage</h3>
+                <h3 class="text-heading font-semibold">Start Using Your App</h3>
               </div>
-              <p class="text-body text-on-background/70 mb-6">Launch, update, and control your services with simple commands. Hostup handles the heavy lifting so you can focus on what matters.</p>
+              <p class="text-body text-on-background/70 mb-6">That's it! Your app is now running on your computer. Open your web browser, go to the address Hostup shows you, and start using your very own private app.</p>
               <div class="bg-surface border border-surface-variant rounded-lg p-3 text-caption font-mono space-y-1">
-                <div class="text-primary">$ hostup start --all</div>
-                <div class="text-accent">$ hostup add traefik</div>
-                <div class="text-secondary">$ hostup edit postgres</div>
+                <div class="text-primary">🚀 App is running on your computer</div>
+                <div class="text-accent">🌐 Access it in your web browser</div>
+                <div class="text-secondary">🎉 You now own your own app!</div>
               </div>
             </div>
           </div>
@@ -448,10 +394,10 @@ import MainLayout from "@layouts/main.astro";
   <section class="py-14 px-6 sm:py-20 bg-gradient-to-r from-surface-variant/40 via-primary/20 to-accent/25 dark:from-surface-variant/15 dark:via-primary/8 dark:to-accent/12">
     <div class="max-w-2xl sm:max-w-3xl mx-auto text-center">
       <h2 class="text-2xl sm:text-4xl font-semibold text-on-background mb-6">
-        Ready to Self-Host?
+        Ready to Get Started?
       </h2>
       <p class="text-on-background/70 text-base sm:text-lg mb-8">
-        Join the community of developers taking control of their infrastructure
+        Join thousands of people running their own apps at home
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <ActionButton href="/docs" variant="primary" enableScale>
