@@ -1,6 +1,6 @@
 ---
 import ActionButton from "@components/action_button.astro";
-import CopyButton from "@components/copy_button.astro";
+import CommandBox from "@components/command_box.astro";
 import { GIT_URLS } from "@constants";
 import MainLayout from "@layouts/main.astro";
 ---
@@ -49,10 +49,8 @@ import MainLayout from "@layouts/main.astro";
         <!-- Terminal Content -->
         <div class="p-4 sm:p-6">
           <!-- Command Line -->
-          <div class="flex items-center space-x-3 bg-background/50 rounded-md p-3 border border-surface-variant/30 mb-4">
-            <span class="text-accent text-sm select-none">$</span>
-            <code class="flex-1 font-mono text-on-surface select-all">ssh hostup.sh</code>
-            <CopyButton text="ssh hostup.sh" />
+          <div class="bg-background/50 rounded-md p-3 border border-surface-variant/30 mb-4">
+            <CommandBox command="ssh hostup.sh" />
           </div>
           
           <!-- CTA Section -->
@@ -188,9 +186,7 @@ import MainLayout from "@layouts/main.astro";
               </div>
               <p class="text-body text-on-background/70 mb-6">Just copy and paste one command into your terminal. Hostup opens up and you're ready to go—no complicated installation required.</p>
               <div class="rounded-md p-3 bg-surface border border-surface-variant inline-block">
-                <span class="mr-2 text-caption text-accent select-none">$</span>
-                <code class="mr-6 text-caption font-mono text-on-surface select-all">ssh hostup.sh</code>
-                <CopyButton text="ssh hostup.sh" />
+                <CommandBox command="ssh hostup.sh" />
               </div>
             </div>
           </div>

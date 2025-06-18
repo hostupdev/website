@@ -1,0 +1,25 @@
+---
+import CopyButton from "@components/copy_button.astro";
+
+export interface Props {
+	command: string;
+	commandClass?: string;
+	prompt?: string;
+	promptClass?: string;
+}
+
+const { command, prompt = "$", commandClass, promptClass } = Astro.props;
+
+const containerClasses = "flex items-center space-x-3";
+
+const promptClasses = promptClass ?? "text-accent text-caption select-none";
+
+const codeClasses =
+	commandClass ?? "flex-1 font-mono text-on-surface text-caption select-all";
+---
+
+<div class={containerClasses}>
+  <span class={promptClasses}>{prompt}</span>
+  <code class={codeClasses}>{command}</code>
+  <CopyButton text={command} />
+</div> 

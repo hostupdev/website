@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import CopyButton from "@components/copy_button.astro";
+import CommandBox from "@components/command_box.astro";
 import { GIT_URLS, VERSIONS } from "@constants";
 import hostupLogoDark from "public/images/hostup-logo-dark.png";
 import hostupLogoLight from "public/images/hostup-logo-light.png";
@@ -37,11 +37,7 @@ const date = new Date();
         
         <!-- Command Box -->
         <div class="bg-background/50 border border-surface-variant/30 rounded-lg p-4 max-w-sm">
-          <div class="flex items-center space-x-3">
-            <span class="text-accent text-sm">$</span>
-            <code class="flex-1 font-mono text-on-surface text-sm">ssh hostup.sh</code>
-            <CopyButton text="ssh hostup.sh" size="sm" />
-          </div>
+          <CommandBox command="ssh hostup.sh" />
         </div>
       </div>
       
