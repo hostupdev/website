@@ -1,9 +1,5 @@
 // Group constants by functionality
 
-export const VERSIONS = {
-	HOSTUP_CLI: "0.1.0",
-};
-
 export const GIT_URLS = {
 	ROOT: "https://github.com/hostupdev",
 	HOSTUP_CLI: "https://github.com/hostupdev/hostup",

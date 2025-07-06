@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import CommandBox from "@components/command_box.astro";
-import { GIT_URLS, VERSIONS } from "@constants";
+import { GIT_URLS } from "@constants";
 import hostupLogoDark from "public/images/hostup-logo-dark.png";
 import hostupLogoLight from "public/images/hostup-logo-light.png";
 
@@ -132,7 +132,6 @@ const date = new Date();
             <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
             <span class="text-on-surface/60">All systems operational</span>
           </div>
-          <span class="text-on-surface/40">v{VERSIONS.HOSTUP_CLI}</span>
         </div>
       </div>
     </div>
