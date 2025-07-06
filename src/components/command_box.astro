@@ -6,20 +6,40 @@ export interface Props {
 	commandClass?: string;
 	prompt?: string;
 	promptClass?: string;
+	notWorking?: boolean;
 }
 
-const { command, prompt = "$", commandClass, promptClass } = Astro.props;
+const {
+	command,
+	prompt = "$",
+	commandClass,
+	promptClass,
+	notWorking = false,
+} = Astro.props;
 
 const containerClasses = "flex items-center space-x-3";
 
 const promptClasses = promptClass ?? "text-accent text-caption select-none";
 
 const codeClasses =
-	commandClass ?? "flex-1 font-mono text-on-surface text-caption select-all";
+	commandClass ??
+	`flex-1 font-mono text-caption select-all ${notWorking ? "text-on-surface/50" : "text-on-surface"}`;
 ---
 
-<div class={containerClasses}>
-  <span class={promptClasses}>{prompt}</span>
-  <code class={codeClasses}>{command}</code>
-  <CopyButton text={command} />
+<div class="space-y-2">
+	<div class={containerClasses}>
+		<span class={promptClasses}>{prompt}</span>
+		<code class={codeClasses}>{command}</code>
+		<CopyButton text={command} />
+	</div>
+	
+	{notWorking && (
+		<div class="flex items-center space-x-2 text-xs">
+			<div class="flex items-center space-x-1 bg-surface-variant/40 text-on-surface/60 px-2 py-1 rounded-full border border-surface-variant/30">
+				<div class="w-2 h-2 bg-accent-variant rounded-full animate-pulse"></div>
+				<span>Coming Soon</span>
+			</div>
+			<span class="text-on-surface/50">This command is not yet available</span>
+		</div>
+	)}
 </div> 

@@ -50,7 +50,7 @@ import MainLayout from "@layouts/main.astro";
         <div class="p-4 sm:p-6">
           <!-- Command Line -->
           <div class="bg-background/50 rounded-md p-3 border border-surface-variant/30 mb-4">
-            <CommandBox command="ssh hostup.sh" />
+            <CommandBox command="ssh hostup.sh" notWorking={true} />
           </div>
           
           <!-- CTA Section -->
@@ -186,7 +186,7 @@ import MainLayout from "@layouts/main.astro";
               </div>
               <p class="text-body text-on-background/70 mb-6">Just copy and paste one command into your terminal. Hostup opens up and you're ready to go—no complicated installation required.</p>
               <div class="rounded-md p-3 bg-surface border border-surface-variant inline-block">
-                <CommandBox command="ssh hostup.sh" />
+                <CommandBox command="ssh hostup.sh" notWorking={true} />
               </div>
             </div>
           </div>
