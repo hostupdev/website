@@ -6,7 +6,6 @@ import Layout from "@layouts/base.astro";
 interface Props {
 	title?: string;
 	description?: string;
-	icon?: string;
 	image?: string;
 	url?: string;
 	disableHeader?: boolean;
@@ -16,7 +15,6 @@ interface Props {
 const {
 	title,
 	description,
-	icon,
 	image,
 	url,
 	disableHeader = false,
@@ -27,7 +25,6 @@ const {
 <Layout
   title={title}
   description={description}
-  icon={icon}
   image={image}
   url={url}
 >

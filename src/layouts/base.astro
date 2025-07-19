@@ -6,7 +6,6 @@ import "@styles/global.css";
 interface Props {
 	title?: string;
 	description?: string;
-	icon?: string;
 	image?: string;
 	url?: string;
 }
@@ -14,7 +13,6 @@ interface Props {
 const {
 	title = SITE.TITLE,
 	description = SITE.DESCRIPTION,
-	icon = SITE.ICON,
 	image = SITE.DEFAULT_OG_IMAGE,
 	url = SITE.URL,
 } = Astro.props;
@@ -81,8 +79,8 @@ const {
     <!-- Additional Meta Tags -->
     <meta name="generator" content={Astro.generator || "Astro"} />
     <meta name="author" content={META.AUTHOR} />
-    <meta name="theme-color" content={META.DARK_THEME_COLOR} />
-    <link rel="icon" type="image/svg+xml" href={icon} />
+    <meta name="theme-color" content={META.LIGHT_THEME_COLOR} />
+    <link rel="icon" type="image/svg+xml" href={SITE.LIGHT_ICON} />
     <link rel="canonical" href={url} />
 
     <!-- Title -->
