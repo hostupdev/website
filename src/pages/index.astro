@@ -1,6 +1,8 @@
 ---
 import ActionButton from "@components/action_button.astro";
+import ComingSoon from "@components/coming_soon.astro";
 import CommandBox from "@components/command_box.astro";
+import CopyButton from "@components/copy_button.astro";
 import { GIT_URLS } from "@constants";
 import MainLayout from "@layouts/main.astro";
 ---
@@ -24,54 +26,67 @@ import MainLayout from "@layouts/main.astro";
 
     <!-- Terminal with Strong CTA -->
     <div class="w-full max-w-sm sm:max-w-md mx-auto">
-      <div class="bg-surface border border-primary/20 rounded-lg shadow-outer-lg backdrop-blur-sm overflow-hidden">
-        <!-- Terminal Header with Tabs -->
-        <div class="flex items-center bg-surface-variant/20 border-b border-primary/10">
-          <div class="flex space-x-1 px-4 py-2">
-            <div class="w-3 h-3 rounded-full bg-accent-variant/60"></div>
-            <div class="w-3 h-3 rounded-full bg-secondary/60"></div>
-            <div class="w-3 h-3 rounded-full bg-primary/60"></div>
-          </div>
-          <div class="flex flex-1 -mb-px">
-            <div class="px-3 py-2 text-xs font-mono border-b-2 border-primary bg-surface/50 text-primary">
-              terminal
+      <div class="relative">
+        <!-- Simplified Terminal -->
+        <!-- Terminal Window with Tabs -->
+        <div class="bg-surface border border-primary/20 rounded-lg shadow-outer-lg backdrop-blur-sm overflow-hidden">
+          <!-- Terminal Header with Tabs -->
+          <div class="flex items-center bg-surface-variant/20 border-b border-primary/10">
+            <div class="flex space-x-1.5 px-3 py-2">
+              <div class="w-3 h-3 rounded-full bg-red-500/60 hover:bg-red-500/80 transition-colors"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/60 hover:bg-yellow-500/80 transition-colors"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/60 hover:bg-green-500/80 transition-colors"></div>
             </div>
-            <a href="/docs" class="px-3 py-2 text-xs font-mono border-b-2 border-transparent hover:border-primary/30 text-on-surface/60 hover:text-on-surface transition-colors">
-              docs
-            </a>
-            <a href="/services" class="px-3 py-2 text-xs font-mono border-b-2 border-transparent hover:border-primary/30 text-on-surface/60 hover:text-on-surface transition-colors">
-              services
-            </a>
+            <div class="flex flex-1 -mb-px ml-2">
+              <div class="px-3 py-2 text-xs font-mono border-b-2 border-primary bg-surface/50 text-primary">
+                terminal
+              </div>
+              <a href="/docs" class="px-3 py-2 text-xs font-mono border-b-2 border-transparent hover:border-primary/30 text-on-surface/60 hover:text-on-surface transition-colors">
+                docs
+              </a>
+              <a href="/services" class="px-3 py-2 text-xs font-mono border-b-2 border-transparent hover:border-primary/30 text-on-surface/60 hover:text-on-surface transition-colors">
+                services
+              </a>
+            </div>
+          </div>
+          
+          <!-- Terminal Content -->
+          <div class="p-4 sm:p-5">
+            <div class="bg-background/50 rounded border border-surface-variant/30 p-4 font-mono text-sm">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center text-on-surface/80">
+                    <span class="text-accent mr-2">$</span>
+                    <span>ssh hostup.sh</span>
+                    <span class="inline-block w-2 h-4 bg-primary ml-1 animate-blink"></span>
+                  </div>
+                  <CopyButton text="ssh hostup.sh" size="lg" />
+                </div>
+                	<div class="flex items-center space-x-2 text-xs">
+		              	<div class="flex items-center space-x-1 bg-surface-variant/40 text-on-surface/60 px-2 py-1 rounded-full border border-surface-variant/30">
+		            		<div class="w-2 h-2 bg-accent-variant rounded-full animate-pulse"></div>
+		              		<span class="whitespace-nowrap">Coming&nbsp;Soon</span>
+	                	</div>
+		            	<span class="text-on-surface/50">Not yet available</span>
+            		</div>
+              </div>
+            </div>
           </div>
         </div>
         
-        <!-- Terminal Content -->
-        <div class="p-4 sm:p-6">
-          <!-- Command Line -->
-          <div class="bg-background/50 rounded-md p-3 border border-surface-variant/30 mb-4">
-            <CommandBox command="ssh hostup.sh" notWorking={true} />
-          </div>
+        <!-- CTA Section -->
+        <div class="mt-8 space-y-4">
+          <ActionButton href="/docs" variant="gradient" size="lg" enableScale class="w-full text-base font-semibold shadow-lg">
+            Start Now →
+          </ActionButton>
           
-          <!-- CTA Section -->
-          <div class="space-y-4">
-            <!-- Primary Action -->
-            <div class="text-center">
-              <ActionButton href="/docs" variant="gradient" size="lg" enableScale class="w-full text-base font-semibold py-3">
-                🚀 Get Started
-              </ActionButton>
-            </div>
-            
-            <!-- Secondary Info & Action -->
-            <div class="text-center space-y-4">
-              <p class="text-on-surface/60 text-caption">
-                No downloads • No setup • Try it instantly
-              </p>
-              <div class="flex justify-center">
-                <ActionButton href="#why-hostup" variant="ghost" size="sm" class="text-caption text-accent hover:text-accent hover:bg-accent/5 border-none underline decoration-dotted underline-offset-2">
-                  or see what makes it special →
-                </ActionButton>
-              </div>
-            </div>
+          <div class="text-center space-y-2">
+            <p class="text-on-background/50 text-sm">
+              No downloads • No setup • Try it instantly
+            </p>
+            <ActionButton href="#why-hostup" variant="ghost" size="sm" class="text-xs text-primary hover:text-primary/80">
+              Learn more ↓
+            </ActionButton>
           </div>
         </div>
       </div>

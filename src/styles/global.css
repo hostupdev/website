@@ -42,6 +42,21 @@
 
 	/* Backdrop Blur */
 	--backdrop-blur-sm: 6px;
+
+	/* Keyframes */
+	@keyframes blink {
+		0%,
+		50% {
+			opacity: 1;
+		}
+		51%,
+		100% {
+			opacity: 0;
+		}
+	}
+
+	/* Animations */
+	--animate-blink: blink 1.5s infinite;
 }
 
 @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
