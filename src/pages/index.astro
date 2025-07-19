@@ -13,13 +13,12 @@ import MainLayout from "@layouts/main.astro";
   >
     <div class="text-center space-y-4 sm:space-y-6 max-w-xl sm:max-w-5xl mb-12 sm:mb-24">
       <h1 class="text-hero text-gradient">
-        Run Your Own Apps at Home
+        Private Software Hosting
       </h1>
       <p
         class="text-hero-sub text-on-background/60 max-w-xs sm:max-w-xl mx-auto"
       >
-        Set up your own private cloud, password manager, file storage, and more. 
-        No technical expertise required—just follow the simple guided setup.
+        Deploy cloud storage, password managers, media servers, and internal tools on your own infrastructure. Full control, no expertise required.
       </p>
     </div>
 
@@ -87,7 +86,7 @@ import MainLayout from "@layouts/main.astro";
           Why Choose Hostup?
         </h2>
         <p class="text-body text-on-surface/70 max-w-xs sm:max-w-2xl mx-auto">
-          The easiest way to run your own apps and take control of your digital life.
+          The simplest path to private software hosting for beginners, with the power and flexibility experts demand.
         </p>
       </div>
 
@@ -104,10 +103,10 @@ import MainLayout from "@layouts/main.astro";
             <h3 class="text-heading font-semibold">Simple Step-by-Step Setup</h3>
           </div>
           <p class="text-body text-on-surface/70 mb-6 flex-grow">
-            Hostup asks simple questions and handles all the complex stuff automatically. No confusing commands or technical files to edit. If you can fill out a form, you can use Hostup.
+            Hostup's guided setup asks simple questions and automatically handles complex configurations, container orchestration, and dependencies.
           </p>
           <div class="text-caption font-mono text-primary bg-background/70 dark:bg-background/50 rounded p-2 mt-auto">
-            Guided questions · Automatic setup · No errors
+            Guided questions · Automatic config · For all skill levels
           </div>
         </div>
 
@@ -126,10 +125,10 @@ import MainLayout from "@layouts/main.astro";
             <h3 class="text-heading font-semibold">Works on Any Computer</h3>
           </div>
           <p class="text-body text-on-surface/70 mb-6 flex-grow">
-            Use that old laptop, a mini PC, or even a Raspberry Pi. Hostup works on Windows, Mac, and Linux. No need to buy expensive new hardware—use what you already have.
+            Deploy on your own hardware (laptops, mini PCs, Raspberry Pi). Supports Windows, Mac, Linux with seamless container runtime integrations.
           </p>
           <div class="text-caption font-mono text-accent bg-background/70 dark:bg-background/50 rounded p-2 mt-auto">
-            Any device · Any OS · Use what you have
+            Any device · Any OS · Container-ready
           </div>
         </div>
 
@@ -145,13 +144,13 @@ import MainLayout from "@layouts/main.astro";
             </svg>
           </div>
           <div class="flex items-center mb-2">
-            <h3 class="text-heading font-semibold">Tons of Apps Ready to Go</h3>
+            <h3 class="text-heading font-semibold">Tons of Software Ready to Go</h3>
           </div>
           <p class="text-body text-on-surface/70 mb-6 flex-grow">
-            From password managers to your own personal Netflix, we have apps for everything. Each one comes pre-configured and tested, so you know it'll work perfectly.
+            Choose from a growing library of pre-configured, containerized services like password managers and media servers. Easy for beginners, with advanced customization options for power users.
           </p>
           <div class="text-caption font-mono text-secondary bg-background/70 dark:bg-background/50 rounded p-2 mt-auto">
-            Pre-tested · Ready to use · Always growing
+            Pre-tested containers · Customizable · Always expanding
           </div>
         </div>
       </div>
@@ -165,7 +164,7 @@ import MainLayout from "@layouts/main.astro";
           How It Works
         </h2>
         <p class="text-body text-on-background/70">
-          From zero to running your own apps in just a few minutes
+          From zero to running your own private software in just a few minutes
         </p>
       </div>
 
@@ -184,7 +183,9 @@ import MainLayout from "@layouts/main.astro";
                 <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-body shadow z-10 mr-4 sm:hidden">1</div>
                 <h3 class="text-heading font-semibold">Start Hostup</h3>
               </div>
-              <p class="text-body text-on-background/70 mb-6">Just copy and paste one command into your terminal. Hostup opens up and you're ready to go—no complicated installation required.</p>
+              <p class="text-body text-on-background/70 mb-6">
+                One command launches Hostup, automatically setting up your private hosting environment with container support.
+              </p>
               <div class="rounded-md p-3 bg-surface border border-surface-variant inline-block">
                 <CommandBox command="ssh hostup.sh" notWorking={true} />
               </div>
@@ -201,9 +202,11 @@ import MainLayout from "@layouts/main.astro";
             <div class="sm:ml-4 flex-1 mb-16">
               <div class="flex items-center mb-2">
                 <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-body shadow z-10 mr-4 sm:hidden">2</div>
-                <h3 class="text-heading font-semibold">Pick an App</h3>
+                <h3 class="text-heading font-semibold">Pick Software</h3>
               </div>
-              <p class="text-body text-on-background/70 mb-6">Browse through our collection of apps and choose what you want to run. Need your own cloud storage? Want a password manager? We've got you covered.</p>
+              <p class="text-body text-on-background/70 mb-6">
+                Browse our curated collection of containerized services. Select what you need, from basic file sharing to advanced media streaming.
+              </p>
               <div class="bg-surface border border-surface-variant rounded-lg p-3 text-caption font-mono inline-block">
                 <div class="rounded-lg p-3 text-caption font-mono text-left">
                   <div class="flex items-center mb-2">
@@ -259,7 +262,9 @@ import MainLayout from "@layouts/main.astro";
                 <div class="w-8 h-8 rounded-full bg-accent text-on-accent flex items-center justify-center font-bold text-body shadow z-10 mr-4 sm:hidden">3</div>
                 <h3 class="text-heading font-semibold">Answer Simple Questions</h3>
               </div>
-              <p class="text-body text-on-background/70 mb-6">Hostup asks you easy questions like "What password do you want?" and "What should we call this?" No technical knowledge needed—just answer like you're setting up any other app.</p>
+              <p class="text-body text-on-background/70 mb-6">
+                Provide basic info through our guided prompts. Hostup uses your answers to configure secure, optimized container deployments automatically.
+              </p>
               <!-- Graphic -->
               <div class="bg-surface border border-surface-variant rounded-lg p-6">
                 <!-- Input Files -->
@@ -322,7 +327,7 @@ import MainLayout from "@layouts/main.astro";
                       </div>
                     </div>
                     <div class="min-w-0 flex-1">
-                      <div class="text-sm font-mono text-primary font-semibold break-all">Your App</div>
+                      <div class="text-sm font-mono text-primary font-semibold break-all">Your Software</div>
                       <div class="text-xs text-on-surface/60">Ready to use</div>
                     </div>
                     <div class="flex-shrink-0">
@@ -372,13 +377,15 @@ import MainLayout from "@layouts/main.astro";
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 class="text-heading font-semibold">Start Using Your App</h3>
+                <h3 class="text-heading font-semibold">Start Using Your Software</h3>
               </div>
-              <p class="text-body text-on-background/70 mb-6">That's it! Your app is now running on your computer. Open your web browser, go to the address Hostup shows you, and start using your very own private app.</p>
+              <p class="text-body text-on-background/70 mb-6">
+                Your containerized service is now running securely. Access it via browser and enjoy full control over your private software.
+              </p>
               <div class="bg-surface border border-surface-variant rounded-lg p-3 text-caption font-mono space-y-1">
-                <div class="text-primary">🚀 App is running on your computer</div>
+                <div class="text-primary">🚀 Software is running on your computer</div>
                 <div class="text-accent">🌐 Access it in your web browser</div>
-                <div class="text-secondary">🎉 You now own your own app!</div>
+                <div class="text-secondary">🎉 You now own your own software!</div>
               </div>
             </div>
           </div>
@@ -393,7 +400,7 @@ import MainLayout from "@layouts/main.astro";
         Ready to Get Started?
       </h2>
       <p class="text-on-background/70 text-base sm:text-lg mb-8">
-        Join thousands of people running their own apps at home
+        Whether you're new to self-hosting or a container expert, Hostup makes it effortless.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <ActionButton href="/docs" variant="primary" enableScale>
