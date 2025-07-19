@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import CommandBox from "@components/command_box.astro";
-import { GIT_URLS } from "@constants";
+import { GIT_URLS, SITE } from "@constants";
 import hostupLogoDark from "public/images/hostup-logo-dark.png";
 import hostupLogoLight from "public/images/hostup-logo-light.png";
 
@@ -31,8 +31,7 @@ const date = new Date();
         
         <!-- Description -->
         <p class="text-body text-on-surface/70 mb-6 max-w-md">
-          Run your own apps at home with ease. The simplest way to set up your own 
-          private cloud, password manager, and more—no technical expertise required.
+          {SITE.DESCRIPTION}
         </p>
         
         <!-- Command Box -->
